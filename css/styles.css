@@ -12,6 +12,7 @@
     --keyword: #66d9ef;
     --punctuation: #abb2bf;
     --background: #202329;
+    --backgound_opacity: #0202025c;
     --radius: 10px;
     --inline-background: #1b1f230d;
     --inline-color: #476582;
@@ -45,7 +46,7 @@ header, main{
     position: sticky;
     width: 100%;
     top: 0.1px;
-    z-index: 1000;
+    z-index: 200;
 }
 
 
@@ -351,3 +352,223 @@ header, main{
     background: red !important;
 }
 
+/*CARD EMERGENTE*/
+
+.container_develorment_character{
+    position: fixed;
+    min-height: max-content;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: var(--backgound_opacity);
+    z-index: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.develorment_character {
+    display: flex;
+    width: 65%;
+    height: auto;
+    min-width: 300px;
+    min-height: 650px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background_card);
+    border-radius: var(--radius);
+    position: relative;
+    flex-wrap: wrap;
+    margin: 10px;
+    max-width: 1000px;
+}
+
+.develorment_close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin: 10px;
+    margin-top: 5px;
+    font-size: 25px;
+    color: var(--natural);
+}
+
+#dev_close{
+    cursor: pointer;
+}
+
+.dev_char_continer_img {
+    width: 40%;
+    top: 0px;
+    right: 0px;
+    margin: 50px;
+    margin-right: 95px;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+.dev_info_img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.dev_char_container_info {
+    flex-grow: 1;
+    height: 100%;
+    min-width: 500px;
+}
+
+.dev_char_container_info {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    gap: 25px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 18px;
+}
+
+.dev_info_Contianer_name {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+h1.dev_info_name {
+    color: var(--natural);
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.dev_info_style_title {
+    font-size: 22px;
+    color: var(--subtitle);
+    font-weight: 100;
+}
+
+.dev_info_style_subtitle {
+    color: var(--natural);
+    font-weight: 100;
+    font-size: 30px;
+}
+
+.dev_info_status-text {
+    color: var(--natural);
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.dev_info_staus {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cdev_info_st {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: var(--punctuation);
+}
+
+.dev_info_status-text {
+    color: var(--natural);
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.dev.info_location-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dev_info_container_episode {
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 5px;
+}
+
+.dev_info_episode {
+    display: flex;
+    background: var(--putuacion);
+    outline: 1px solid;
+    border-radius: var(--radius);
+    min-height: 80px;
+    padding: 5px;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    color: var(--natural);
+    margin: 5px;
+}
+
+.episode_style_text {
+    font-weight: 100;
+}
+
+.dev_info_Contianer_origen {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1320px){
+    .develorment_character{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 810px){
+    .dev_char_continer_img {
+        margin-right: 50px;
+    }
+
+}
+
+@media screen and (max-width: 660px){
+    .container_develorment_character {
+        margin: 0px;
+        padding: 0px;
+        overflow-y: scroll;
+    }
+
+    .develorment_character{
+        border-radius: 0px;
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        
+    }
+
+    .dev_char_container_info{
+        justify-content: end;
+        height: auto;
+    }
+
+    .dev_char_continer_img {
+        margin: 20px;
+        width: 47%;
+        position: relative;
+    }
+
+    .dev_info_container_episode{
+        grid-template-columns: 1fr;
+        width: 100%;
+
+    }
+
+    .dev_char_container_info {
+        background: var(--background_card);
+        min-width: 0px;
+    }
+
+}
