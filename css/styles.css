@@ -111,6 +111,7 @@ header, main{
     position: relative;
     gap: 28px;
     height: calc(50vh - 60px);
+    min-height: 300px;
 }
 
 .img_rm{
