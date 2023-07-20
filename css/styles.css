@@ -187,6 +187,7 @@ header, main{
     border-radius: var(--radius);
     background-color:var(--background_card);
     overflow: hidden;
+    cursor: pointer;
 }
 
 .card_img-content {
@@ -369,6 +370,7 @@ header, main{
     justify-content: center;
     align-items: center;
     padding: 10px;
+    overflow: auto;
 }
 
 .develorment_character {
@@ -444,6 +446,7 @@ h1.dev_info_name {
     color: var(--natural);
     font-size: 40px;
     font-weight: bold;
+    width: 60%;
 }
 
 .dev_info_style_title {
@@ -477,6 +480,10 @@ h1.dev_info_name {
     background: var(--punctuation);
 }
 
+.ico_cd-fl{
+    cursor:  pointer !important;
+}
+
 .dev_info_status-text {
     color: var(--natural);
     font-weight: 100;
@@ -487,6 +494,8 @@ h1.dev_info_name {
     display: flex;
     align-items: center;
     gap: 8px;
+    width: 40%;
+    flex-wrap: wrap;
 }
 
 .dev_info_container_episode {
@@ -494,6 +503,7 @@ h1.dev_info_name {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     gap: 5px;
+    max-height: 285px;
 }
 
 .dev_info_episode {
@@ -521,6 +531,40 @@ h1.dev_info_name {
     flex-direction: column;
 }
 
+
+.loadEffect{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    background-color: var(--backgound_opacity);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.textloadDiv{
+    font-family: 'Lilita One', cursive;
+    font-size: 110px;
+    color: var(--natural);
+}
+
+.textloadDiv::after{
+    content: "...";
+    position: absolute;
+    position: absolute;
+    z-index: 1000;
+    width: auto;
+    height: auto;
+    animation: desaparecer .8s  ease infinite;
+}
+
+
 @media screen and (max-width: 1320px){
     .develorment_character{
         width: 90%;
@@ -532,8 +576,39 @@ h1.dev_info_name {
         margin-right: 50px;
     }
 
+    .textloadDiv{
+        font-size: 55px;
+    }
+    
+
 }
 
+
+@media screen and (max-height: 635px){
+    .develorment_character{
+        top: 25%;
+    }
+}
+
+@media screen and (max-height: 460px){
+    .develorment_character{
+        top: 50%;
+    }
+}
+
+@media screen and (max-height: 360px){
+    .develorment_character{
+        top: 40%;
+    }
+}
+
+
+
+@media screen and (max-height: 345px){
+    .develorment_character{
+        top: 70%;
+    }
+}
 @media screen and (max-width: 660px){
     .container_develorment_character {
         margin: 0px;
@@ -547,6 +622,14 @@ h1.dev_info_name {
         height: 100%;
         margin: 0px;
         
+    }
+
+    h1.dev_info_name {
+        width:100%;
+    }
+
+    .dev.info_location-date {
+        width: 100%;
     }
 
     .dev_char_container_info{
@@ -572,3 +655,22 @@ h1.dev_info_name {
     }
 
 }
+
+/*animation load*/
+
+
+
+
+
+
+
+@keyframes desaparecer {
+    0%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+

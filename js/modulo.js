@@ -47,6 +47,22 @@
         let card = document.createElement("ARTICLE");
         card.classList.add("card");
         card.setAttribute("id",id);
+        card.setAttribute("name","card")
+        
+        card.addEventListener("click",()=>{
+            console.log("Cargando..")
+            loadCardEffect();
+            PeticionApiRM(`https://rickandmortyapi.com/api/character/${id}`)
+            .then(res =>{
+                setTimeout(()=>{
+                    loadCardEffectRemove();
+                    let person = JSON.parse(res);
+                    createCardFloat(person.name,person.image,person.gender,person.status,person.species,person.origin.name,person.location.name,person.episode,person.episode[0],person.origin.url,person.id,document.getElementById("modal"))
+                    console.clear()
+                    console.log("Ya carga")
+                },2000)
+            })
+        })
        
         
         let st = "card_st";
@@ -128,4 +144,158 @@
         return span;
     }
 
-export {PeticionApiRM,newFechUTC,crearCookie,obtenerCookie,randomNumber,generarCard,searchCharacters,cardRamdon,notfound,settingSeen};
+    function createCardFloat(name,img,gander,status,spacies,world,location,episode,seen,origin,id,modal){
+        let  container = document.createElement("SECTION");
+        container.classList.add("container_develorment_character");
+        container.setAttribute("id",`cardFloat${id}`)
+
+        let st = "card_st";
+        if(status == "Alive") st="card_st life";
+        if(status == "Dead") st="card_st dead";
+    
+        let content = `
+                        <article class="develorment_character">
+                            <div class="develorment_close">
+                                <i class="fa-solid fa-xmark ico_cd-fl" id="dev_close${id}"></i>
+                            </div>
+                            <div class="dev_char_continer_img">
+                                <img src=${img} alt=${name} class="dev_info_img">
+                            </div>
+                            <div class="dev_char_container_info">
+                                <article class="dev_info_Contianer_name">
+                                    <h1 class="dev_info_name">${name}</h1>
+                                    <div class="dev_info_container_gander">
+                                        <h4 class="dev_info_gander dev_info_style_title">Gander:</h4>
+                                        <h3 class="dev_info_gander-dt dev_info_style_subtitle">${gander}</h3>
+                                    </div>
+                                    <div class="dev_info_staus">
+                                        <span class="cdev_info_st ${st}" id="st"></span>
+                                        <h4 class="dev_info_status-text" id="status">${status}-${spacies}</h4>
+                                    </div>
+                                </article>
+    
+                                <article class="dev_info_Contianer_origen">
+                                        <div>
+                                            <h6 class="dev_info_location dev_info_style_title">Origin:</h6>
+                                            <div class="dev info_location-date">
+                                                <h4 class="dev_info_location-text dev_info_style_subtitle" id="location">${world}</h4>
+                                                <h4 class="dev_info_location-text dev_info_style_subtitle" id="origintype${id}">unknown</h4>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h6 class="dev_info_location  dev_info_style_title">Dimension:</h6>
+                                            <h4 class="dev_info_location-text dev_info_style_subtitle" id="origindi${id}">unknown</h4>
+                                        </div>
+                                </article>
+    
+                                <article class="dev_info_container_location">
+                                    <h6 class="dev_location dev_info_style_title">Last known location:</h6>
+                                    <h4 class="dev_location-text dev_info_style_subtitle" id="location">${location}</h4>
+                                </article>
+    
+                                <article class="dev_info_container_seen">
+                                    <h6 class="dev_seen dev_info_style_title">Fiest seen in:</h6>
+                                    <h4 class="dev_seen-text dev_info_style_subtitle" id="emergeSeen${id}">unknown</h4>
+                                </article>
+                                
+                                <article class="dev_info_container_episode" id="episode${id}">
+                                   
+                                </article>
+    
+                            </div>
+                        </article>
+        
+                        `;
+            container.innerHTML=content;
+            container.style.opacity="0";
+            modal.appendChild(container);
+
+            episode.forEach(element => {
+                 episodeCardFloat(element,document.getElementById(`episode${id}`));
+
+            });
+            settingSeen(seen,document.getElementById(`emergeSeen${id}`));
+            originCardFlot(origin,[document.getElementById(`origintype${id}`),document.getElementById(`origindi${id}`)]);
+            closeCardEmergente(`dev_close${id}`);
+            
+            setTimeout(() => {
+                document.getElementById(`cardFloat${id}`).style.opacity="1";
+            }, 500);
+
+    }
+
+    function closeCardEmergente(id){
+        document.getElementById(`${id}`).addEventListener("click",()=>{
+                let container_id = document.getElementById(`${id}`).parentNode.parentNode.parentElement.getAttribute("id");
+                let container = document.getElementById(`${container_id}`);
+                container.style.animation="desaparecer .8s ease"
+                setTimeout(()=>container.remove(),800)
+        })
+    }
+    
+    function episodeCardFloat(url,modal){
+    
+        PeticionApiRM(url)
+        .then(res=>{
+            let person =JSON.parse(res);
+                let content =`
+                    <div class="dev_info_episode">
+                        <h3 class="episode_name  episode_style_text">${person.name}</h3>
+                        <h3 class="episode_here  episode_style_text">${person.episode}</h3>
+                        <h4 class="episode_fecha  episode_style_text">${person.air_date}</h4>
+                    </div>
+                            `;
+                modal.innerHTML+=content;
+        }).catch(err=>{
+           console.log("No aparece informacion sobre en que en episodio aparece")
+        })
+    }
+
+    function  originCardFlot(url,modal){
+        PeticionApiRM(url)
+        .then(res=>{
+            let person =JSON.parse(res);
+            modal[0].textContent=person.name;
+            modal[1].textContent=person.dimension;
+        }).catch(err=>{
+            modal[0].textContent="unknown";
+            modal[0].textContent="unknown";
+        })
+    }
+
+    function loadCardEffect(){
+        document.body.style.overflow="hidden";
+        let div = document.createElement("DIV");
+        div.classList.add("loadEffect");
+        div.setAttribute("id","loadCard")
+        let textDiv = document.createElement("h1")
+        textDiv.classList.add("textloadDiv")
+        textDiv.innerHTML="Cargando"
+        document.body.appendChild(div)
+        document.getElementById("loadCard").appendChild(textDiv)
+
+    }
+
+    const loadCardEffectRemove = ()=> {
+        document.getElementById("loadCard").style.animation="desaparecer .5s ease"
+        setTimeout(()=>{
+            document.getElementById("loadCard").remove()
+        },500)
+        document.body.style.overflow="auto";
+    }
+    
+
+export {PeticionApiRM,
+        newFechUTC,
+        crearCookie,
+        obtenerCookie,
+        randomNumber,
+        generarCard,
+        searchCharacters,
+        cardRamdon,
+        notfound,
+        settingSeen,
+        closeCardEmergente,
+        createCardFloat
+    
+    };
