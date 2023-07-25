@@ -47,19 +47,20 @@
         let card = document.createElement("ARTICLE");
         card.classList.add("card");
         card.setAttribute("id",id);
-        card.setAttribute("name","card")
+        card.setAttribute("name",name)
         
-        card.addEventListener("click",()=>{
-            console.log("Cargando..")
+        
+        card.addEventListener("click",(e)=>{
+            let selec= e.currentTarget
             loadCardEffect();
             PeticionApiRM(`https://rickandmortyapi.com/api/character/${id}`)
             .then(res =>{
                 setTimeout(()=>{
                     loadCardEffectRemove();
                     let person = JSON.parse(res);
-                    createCardFloat(person.name,person.image,person.gender,person.status,person.species,person.origin.name,person.location.name,person.episode,person.episode[0],person.origin.url,person.id,document.getElementById("modal"))
-                    console.clear()
-                    console.log("Ya carga")
+                    //console.log(person)
+                    createCardFloat(person.name,person.image,person.gender,person.status,person.species,person.origin.name,person.location.name,person.episode,person.episode[0],person.origin.url,person.id,document.getElementById("modal"),selec)
+                    
                 },2000)
             })
         })
@@ -86,7 +87,7 @@
                                 <h4 class="card_location-text" id="location">${location}</h4>
                             </article>
                             <article class="card_content">
-                                <h6 class="card_seen">Fiest seen in:</h6>
+                                <h6 class="card_seen">First seen in:</h6>
                                 <h4 class="card_seen-text" id="seeC${id}">NULL</h4>
                             </article>
                         </section>            
@@ -122,8 +123,10 @@
                     j--;
                 }
             }
+            
         })
         .catch(err=> modal.appendChild(notfound(err)));
+
     }
 
     const settingSeen = async  (url,modal) =>{
@@ -144,16 +147,20 @@
         return span;
     }
 
-    function createCardFloat(name,img,gander,status,spacies,world,location,episode,seen,origin,id,modal){
+    function createCardFloat(name,img,gander,status,spacies,world,location,episode,seen,origin,id,modal,nodo,s=500){
         let  container = document.createElement("SECTION");
         container.classList.add("container_develorment_character");
-        container.setAttribute("id",`cardFloat${id}`)
-
+        container.setAttribute("id",`cardFloat`)
         let st = "card_st";
         if(status == "Alive") st="card_st life";
         if(status == "Dead") st="card_st dead";
-    
+        
         let content = `
+                        
+                        <div class="icon_next iconNFgeneral">
+                            <i class="fa-solid fa-chevron-right" id="after" title="Fomer"></i>
+                        </div>
+
                         <article class="develorment_character">
                             <div class="develorment_close">
                                 <i class="fa-solid fa-xmark ico_cd-fl" id="dev_close${id}"></i>
@@ -179,7 +186,7 @@
                                             <h6 class="dev_info_location dev_info_style_title">Origin:</h6>
                                             <div class="dev info_location-date">
                                                 <h4 class="dev_info_location-text dev_info_style_subtitle" id="location">${world}</h4>
-                                                <h4 class="dev_info_location-text dev_info_style_subtitle" id="origintype${id}">unknown</h4>
+                                                
                                             </div>
                                         </div>
                                         <div>
@@ -194,7 +201,7 @@
                                 </article>
     
                                 <article class="dev_info_container_seen">
-                                    <h6 class="dev_seen dev_info_style_title">Fiest seen in:</h6>
+                                    <h6 class="dev_seen dev_info_style_title">First seen in:</h6>
                                     <h4 class="dev_seen-text dev_info_style_subtitle" id="emergeSeen${id}">unknown</h4>
                                 </article>
                                 
@@ -204,23 +211,30 @@
     
                             </div>
                         </article>
-        
+
+                        <div class="icon_after iconNFgeneral" >
+                            <i class="fa-solid fa-chevron-right" id="Next" title="Next"></i>
+                        </div>
                         `;
             container.innerHTML=content;
             container.style.opacity="0";
             modal.appendChild(container);
+
+            document.getElementById(`Next`).addEventListener("click",()=> ArrayCardInfo(nodo,1))
+            document.getElementById(`after`).addEventListener("click",()=> ArrayCardInfo(nodo,-1))
+
 
             episode.forEach(element => {
                  episodeCardFloat(element,document.getElementById(`episode${id}`));
 
             });
             settingSeen(seen,document.getElementById(`emergeSeen${id}`));
-            originCardFlot(origin,[document.getElementById(`origintype${id}`),document.getElementById(`origindi${id}`)]);
+            originCardFlot(origin,[null,document.getElementById(`origindi${id}`)]);
             closeCardEmergente(`dev_close${id}`);
             
             setTimeout(() => {
-                document.getElementById(`cardFloat${id}`).style.opacity="1";
-            }, 500);
+                document.getElementById("cardFloat").style.opacity="1";
+            },s);
 
     }
 
@@ -255,11 +269,12 @@
         PeticionApiRM(url)
         .then(res=>{
             let person =JSON.parse(res);
-            modal[0].textContent=person.name;
+            //console.log(person)
+            //modal[0].textContent=person.name;
             modal[1].textContent=person.dimension;
         }).catch(err=>{
-            modal[0].textContent="unknown";
-            modal[0].textContent="unknown";
+            //modal[0].textContent="unknown";
+            modal[1].textContent="unknown";
         })
     }
 
@@ -284,8 +299,28 @@
         document.body.style.overflow="auto";
     }
     
+    const ArrayCardInfo = (nodo,direction)=>{
+        try {
+            let id = (direction  == 1)?nodo.nextElementSibling.getAttribute("id"):nodo.previousElementSibling.getAttribute("id");
+            let sibling =(direction  == 1)?nodo.nextElementSibling :nodo.previousElementSibling;
+            if(sibling.getAttribute("class")  == "card"){
+                PeticionApiRM(`https://rickandmortyapi.com/api/character/${id}`)
+                    .then(res =>{
+                            let person = JSON.parse(res);
+                            document.getElementById("cardFloat").remove()
+                            createCardFloat(person.name,person.image,person.gender,person.status,person.species,person.origin.name,person.location.name,person.episode,person.episode[0],person.origin.url,person.id,document.getElementById("modal"),sibling,0);
+                            
+                        })
+                    }
+        } catch (error) {
+            console.log("No hay mas cards")
+        }
+       
+    }
 
-export {PeticionApiRM,
+export {
+
+        PeticionApiRM,
         newFechUTC,
         crearCookie,
         obtenerCookie,
@@ -296,6 +331,7 @@ export {PeticionApiRM,
         notfound,
         settingSeen,
         closeCardEmergente,
-        createCardFloat
+        createCardFloat,
+        ArrayCardInfo
     
     };
