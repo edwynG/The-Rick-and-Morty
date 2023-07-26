@@ -49,11 +49,13 @@
         loadCardEffect();
         PeticionApiRM(`https://rickandmortyapi.com/api/character/${id}`)
         .then(res =>{
+
             setTimeout(()=>{
                 loadCardEffectRemove();
                 let person = JSON.parse(res);
                 //console.log(person)
                 createCardFloat(person.name,person.image,person.gender,person.status,person.species,person.origin.name,person.location.name,person.episode,person.episode[0],person.origin.url,person.id,document.getElementById("modal"),selec)
+                document.body.style.overflow="hidden";
                 
             },2000)
         })
@@ -254,12 +256,13 @@
 
     }
 
-    function closeCardEmergente(id){
+     function closeCardEmergente(id){
         document.getElementById(`${id}`).addEventListener("click",()=>{
                 let container_id = document.getElementById(`${id}`).parentNode.parentNode.parentElement.getAttribute("id");
                 let container = document.getElementById(`${container_id}`);
                 container.style.animation="desaparecer .8s ease"
-                setTimeout(()=>container.remove(),800)
+        
+        setTimeout(()=>{container.remove();document.body.style.overflow="auto";},800)
         })
     }
     
