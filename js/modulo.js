@@ -378,6 +378,7 @@
         if(name.length > 16){
             let arr = name.split(" ");
             arr.pop()
+            arr.pop()
             name=arr.join(" ");
         }
         let st = "card_st";
