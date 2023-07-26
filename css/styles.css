@@ -1,6 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
+
     box-sizing: border-box;
     font-family: sans-ser-apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
 }
@@ -135,7 +136,8 @@ header, main{
 .dt_c{
     background-color: var(--background);
     min-height: 50vh;
-    padding: 80px 13px 13px 5px;
+    padding-bottom: 30px;
+    
 }
 
 
@@ -395,10 +397,26 @@ header, main{
     position: absolute;
     right: 0px;
     top: 0px;
-    margin: 10px;
+    margin-right: 5px;
     margin-top: 5px;
     font-size: 25px;
     color: var(--natural);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 32px;
+    transition: all .5s ease;
+}
+.develorment_close:hover{
+    background-color: #8b8484ad;
+
+}
+
+.develorment_close:active{
+    background-color: #cfb6b6ad;
+
 }
 
 #dev_close{
@@ -587,6 +605,137 @@ h1.dev_info_name {
     color: var(--stopNext) !important;
 }
 
+#after ,#Next{
+    transition: all .5s ease;
+
+}
+
+#after:hover ,#Next:hover{
+    color: #fda4a4;
+
+}
+
+#after:active ,#Next:active{
+    color: #e68181;
+
+}
+
+.container_mode{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: 90px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 35px;
+    margin: 0px 0px;
+}
+
+.icon_mode{
+    color: var(--natural);
+    cursor: pointer;
+    font-size: 27px;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .4s ease;
+}
+
+.icon_mode:hover{
+    background: #6262639c;
+    
+}
+
+.icon_mode:active{
+    background: #a18a8a9c
+}
+
+.mode_container-list {
+    font-size: 23px;
+}
+
+.container_modo-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+select.selec_order {
+    outline: none;
+    border: none;
+    padding: 5px;
+    background: var(--background_card);
+    color: var(--natural);
+    font-weight: bold;
+    width: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+
+.container_icon-list{
+    color: var(--natural);
+    font-size: 30px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+}
+
+.container_icon-list:hover{
+    background-color: #797979c9;
+}
+
+.container_icon-list:active{
+    background-color: #937a7a9c;
+}
+
+.img_list{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container_img {
+    width: 105px;
+    min-width: 105px;
+}
+
+.cardList {
+    display: flex;
+    height: 119px;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background-color: var(--background_card);
+
+
+}
+
+#list_visual{
+    cursor: pointer;
+}
+
+
+.dt-items-list{
+      grid-template-columns: repeat(auto-fit,minmax(min(220px,100%),440px)) !important;
+      grid-auto-rows: 125px !important;
+
+}
+
+
+
+.dt_sec-list{
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 12px;
+    gap: 5px;
+}
+
 @media screen and (max-width: 1320px){
     .develorment_character{
         width: 90%;
@@ -604,6 +753,7 @@ h1.dev_info_name {
     
 
 }
+
 
 
 @media screen and (max-height: 635px){
@@ -632,7 +782,12 @@ h1.dev_info_name {
     }
 }
 
-@media screen and (max-width: 660px){
+@media screen and (max-width: 665px){
+
+    .container_mode{
+        padding: 0px 5px;
+    }
+
     .icon_after {
         position: absolute;
         top: 7%;
@@ -680,19 +835,19 @@ h1.dev_info_name {
 
     .dev_char_continer_img {
         margin: 20px;
-        width: 47%;
+        width: 50%;
         position: relative;
     }
 
     .dev_info_container_episode{
         grid-template-columns: 1fr;
         width: 100%;
-
+        max-height: 200px;
     }
 
     .dev_char_container_info {
         background: var(--background_card);
-        min-width: 0px;
+        min-width: 277px;
     }
 
 }

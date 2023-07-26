@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
@@ -39,15 +38,49 @@
             <div class="img_background_nav">
                 <img src="./img/RM.png" alt="The Rick and Morty" class="img_rm">
             </div>
-    
-    
         </nav>
         <article class="dt_c" >
+            <section class="container_mode">
+                <section class="container_modo-order">
+                    <select name="order" class="selec_order" id="miSelect"> 
+                        <option value="A-Z" selected class="order-items">A-Z</option>
+                        <option value="Z-A" class="order-items">Z-A</option>
+                        <option value="Tipo" class="order-items">Por Tipo</option>
+                        <option value="Status" class="order-items">Estado</option>
+
+                    </select>
+                </section>
+                <section class="container_modo-card">
+                    <div class="mode_container-grid icon_mode">
+                        <i class="fa-solid fa-grip" id="grid_mode"></i>
+                    </div>
+                    <div class="mode_container-list icon_mode">
+                        <i class="fa-solid fa-list" id="list_mode"></i>
+                    </div>
+                </section>
+            </section>
             <section class="dt-items" id="modal">
 
                 
                
             </section>
+            <!-- <article class="cardList" >
+                <div class="container_img">
+                    <img src="https://rickandmortyapi.com/api/character/avatar/657.jpeg" alt=""  class="img_list">
+                </div>
+                <section class="dt_sec-list">
+                    <div class="dt_person">
+                        <h1 class="card_name">Alien Spa Employee</h1>
+                        <div class="card_status">
+                            <span class="card_st life" id="st"></span>
+                            <h4 class="card_status-text" id="status">Alive-Human</h4>
+                        </div>
+                    </div>
+                    <div class="container_icon-list">
+                        <i class="fa-regular fa-eye" id="list_visual"></i>
+                    </div>
+                </section>
+            </article> -->
         </article>
     </main>
 

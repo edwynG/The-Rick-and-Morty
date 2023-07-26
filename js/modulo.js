@@ -43,27 +43,31 @@
         return Math.trunc(Math.random()*n)
     }
 
+    const eventCardInfo = (e,option=false)=>{
+        let selec= (option)? e.currentTarget.parentNode.parentNode.parentNode :e.currentTarget;
+        let id = selec.getAttribute("id")
+        loadCardEffect();
+        PeticionApiRM(`https://rickandmortyapi.com/api/character/${id}`)
+        .then(res =>{
+            setTimeout(()=>{
+                loadCardEffectRemove();
+                let person = JSON.parse(res);
+                //console.log(person)
+                createCardFloat(person.name,person.image,person.gender,person.status,person.species,person.origin.name,person.location.name,person.episode,person.episode[0],person.origin.url,person.id,document.getElementById("modal"),selec)
+                
+            },2000)
+        })
+    }
+
     function generarCard(name,status,species,location,id,img){
         let card = document.createElement("ARTICLE");
         card.classList.add("card");
         card.setAttribute("id",id);
-        card.setAttribute("name",name)
-        
-        
-        card.addEventListener("click",(e)=>{
-            let selec= e.currentTarget
-            loadCardEffect();
-            PeticionApiRM(`https://rickandmortyapi.com/api/character/${id}`)
-            .then(res =>{
-                setTimeout(()=>{
-                    loadCardEffectRemove();
-                    let person = JSON.parse(res);
-                    //console.log(person)
-                    createCardFloat(person.name,person.image,person.gender,person.status,person.species,person.origin.name,person.location.name,person.episode,person.episode[0],person.origin.url,person.id,document.getElementById("modal"),selec)
-                    
-                },2000)
-            })
-        })
+        card.setAttribute("name",name);
+        card.setAttribute("tipo",species);
+        card.setAttribute("Status",status);
+
+        card.addEventListener("click",(e)=> eventCardInfo(e))
        
         
         let st = "card_st";
@@ -100,7 +104,9 @@
     
     }
 
+
     const cardRamdon = (modal,cant) =>{
+        if(localStorage.getItem("modeCardRM") == "true") cant=16;
         modal.innerHTML="";
         let pages = JSON.parse(obtenerCookie("rmApi"));
         PeticionApiRM(pages.characters)
@@ -116,17 +122,27 @@
             for (let j = 0; j < cant; j++) {
                 let i = randomNumber(person.results.length)
                 if(!temp.includes(i)){
-                    modal.appendChild(generarCard(person.results[i].name,person.results[i].status,person.results[i].species,person.results[i].location.name,person.results[i].id,person.results[i].image));
-                    settingSeen(person.results[i].episode[0],document.querySelector(`#seeC${person.results[i].id}`))
+                    if (localStorage.getItem("modeCardRM") == "true") {
+                        modal.classList.add("dt-items-list")
+                        modal.appendChild(createCardList(person.results[j].name,person.results[j].species,person.results[j].status,person.results[j].image,person.results[j].id));
+                        
+                    }else{
+                        modal.classList.remove("dt-items-list")
+                        modal.appendChild(generarCard(person.results[i].name,person.results[i].status,person.results[i].species,person.results[i].location.name,person.results[i].id,person.results[i].image));
+                        settingSeen(person.results[i].episode[0],document.querySelector(`#seeC${person.results[i].id}`))
+
+                    }
                     temp.push(i);
                 }else{
                     j--;
                 }
             }
+            let nodo = orderNodo(localStorage.getItem("orderCardRM"),modal.children);
+            nodo.forEach(Element=> modal.appendChild(Element))
             
         })
         .catch(err=> modal.appendChild(notfound(err)));
-
+        
     }
 
     const settingSeen = async  (url,modal) =>{
@@ -303,19 +319,100 @@
         try {
             let id = (direction  == 1)?nodo.nextElementSibling.getAttribute("id"):nodo.previousElementSibling.getAttribute("id");
             let sibling =(direction  == 1)?nodo.nextElementSibling :nodo.previousElementSibling;
-            if(sibling.getAttribute("class")  == "card"){
+               if(sibling.getAttribute("class")== "card"  || sibling.getAttribute("class") == "cardList"){
                 PeticionApiRM(`https://rickandmortyapi.com/api/character/${id}`)
-                    .then(res =>{
-                            let person = JSON.parse(res);
-                            document.getElementById("cardFloat").remove()
-                            createCardFloat(person.name,person.image,person.gender,person.status,person.species,person.origin.name,person.location.name,person.episode,person.episode[0],person.origin.url,person.id,document.getElementById("modal"),sibling,0);
-                            
-                        })
-                    }
+                .then(res =>{
+                        let person = JSON.parse(res);
+                        document.getElementById("cardFloat").remove()
+                        createCardFloat(person.name,person.image,person.gender,person.status,person.species,person.origin.name,person.location.name,person.episode,person.episode[0],person.origin.url,person.id,document.getElementById("modal"),sibling,0);
+                        
+                })
+               }
         } catch (error) {
             console.log("No hay mas cards")
         }
        
+    }
+
+    const orderNodo= (order,arr)=>{
+        let  nodo=[];
+        for (let index = 0; index < arr.length; index++) {
+            nodo[index]= arr[index];
+        }
+        switch (order) {
+            case "A-Z":
+
+                nodo.sort((a,b)=> a.getAttribute("name").localeCompare(b.getAttribute("name")))
+                break;
+
+            case "Z-A":
+                nodo.sort((a,b)=> b.getAttribute("name").localeCompare(a.getAttribute("name")))
+                break;
+
+            case "Tipo":
+
+                nodo.sort((a,b)=> a.getAttribute("tipo").localeCompare(b.getAttribute("tipo")))
+
+                break;
+                case "Status":
+
+                nodo.sort((a,b)=> a.getAttribute("Status").localeCompare(b.getAttribute("Status")))
+
+                break;
+            default:
+                console.log("Order invalida")
+                break;
+        }
+
+        return nodo;
+    }
+
+
+    function createCardList(name,species,status,img,id){
+        let article = document.createElement("ARTICLE");
+        article.classList.add("cardList");
+        article.setAttribute("id",id);
+        article.setAttribute("name",name);
+        article.setAttribute("tipo",species);
+        article.setAttribute("Status",status);
+        if(name.length > 16){
+            let arr = name.split(" ");
+            arr.pop()
+            name=arr.join(" ");
+        }
+        let st = "card_st";
+        if(status == "Alive") st="card_st life";
+        if(status == "Dead") st="card_st dead";
+
+        let content = `     <div class="container_img">
+                                <img src="${img}" alt="${name}"  class="img_list">
+                            </div>
+                        `;
+        let section = document.createElement("SECTION");
+        section.classList.add("dt_sec-list");
+        let content2= `
+                        <div class="dt_person">
+                            <h1 class="card_name">${name}</h1>
+                            <div class="card_status">
+                                <span class="${st} id="st"></span>
+                                <h4 class="card_status-text" id="status">${status}-${species}</h4>
+                            </div>
+                        </div>
+                        `;
+        let div = document.createElement("DIV");
+        div.classList.add("container_icon-list");
+        let i = document.createElement("I");
+        i.setAttribute("class","fa-regular fa-eye");
+        i.setAttribute("id","list_visual");
+        i.addEventListener("click",e => eventCardInfo(e,true))
+        div.appendChild(i);
+
+        section.innerHTML=content2;
+        section.appendChild(div);
+        article.innerHTML=content;
+        article.appendChild(section);
+
+        return article;
     }
 
 export {
@@ -332,6 +429,8 @@ export {
         settingSeen,
         closeCardEmergente,
         createCardFloat,
-        ArrayCardInfo
+        ArrayCardInfo,
+        orderNodo,
+        createCardList
     
     };
