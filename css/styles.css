@@ -359,7 +359,7 @@ header, main{
 /*CARD EMERGENTE*/
 
 .container_develorment_character{
-    position: absolute;
+    position: fixed;
     min-height: max-content;
     height: 100%;
     width: 100%;
