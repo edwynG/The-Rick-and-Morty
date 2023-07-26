@@ -377,7 +377,6 @@
         article.setAttribute("Status",status);
         if(name.length > 16){
             let arr = name.split(" ");
-            arr.pop()
             if(arr.length > 2) arr.pop()
             if(arr.length >= 3) arr.pop()
             if(arr.length >= 4) arr.pop()
