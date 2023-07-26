@@ -785,7 +785,7 @@ select.selec_order {
 @media screen and (max-width: 665px){
 
     .container_mode{
-        padding: 0px 5px;
+        padding: 0px 0px;
     }
 
     .icon_after {
