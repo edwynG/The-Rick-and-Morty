@@ -389,7 +389,7 @@ header, main{
     border-radius: var(--radius);
     position: relative;
     flex-wrap: wrap;
-    margin: auto;
+    margin: 15px;
     max-width: 1000px;
 }
 
@@ -739,6 +739,12 @@ select.selec_order {
 @media screen and (max-width: 1320px){
     .develorment_character{
         width: 90%;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .develorment_character{
+        margin: auto;
     }
 }
 
