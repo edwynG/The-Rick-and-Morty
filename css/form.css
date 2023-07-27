@@ -1,0 +1,26 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --property: #ff79c6;
+    --numeric: #f08d49;
+    --string: #4cff8f;
+    --keyword: #66d9ef;
+    --punctuation: #abb2bf;
+    --background: #202329;
+    --backgound_opacity: #0202025c;
+    --radius: 10px;
+    --inline-background: #1b1f230d;
+    --inline-color: #476582;
+    --fontzise: 18.5px;
+    --natural: rgb(255, 255, 255);
+    --background_card: rgb(60, 62, 68);
+    --subtitle: rgb(158, 158, 158);
+    --fontsize_subtile: 15.7px;
+    --fontsize_text-subtitle: 18.2px;
+    --spacingObject: 4px;
+    --stopNext:#ffe8e8a6;
+}
