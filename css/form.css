@@ -129,6 +129,8 @@ textarea[name="message"]:focus ~ label{
     height: calc(100vh - 61px);
     flex-wrap: wrap;
     gap: 30px;
+    max-width: 1900px;
+    margin: auto;
 }
 
 .form_container{
@@ -147,6 +149,7 @@ textarea[name="message"]:focus ~ label{
     padding-left: 60px;
     max-width: 800px;
     height: 100%;
+    min-height: 800px;
     width: 40%;
 } 
 
@@ -283,46 +286,49 @@ h3.h3_sub {
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 20px;
-    background-position: 0px -541px;
+    background-position: 0px 48%;
     margin: 5px 5px 5px 0px;
 }
 
-
-/* .form_container{
+.notification {
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    background-color: #3f4042;
+    color: var(--natural);
+    border-radius: 15px;
+    height: 110px;
+    overflow: hidden;
     width: 100%;
-    height: 100%;
+    padding: 6px;
+    max-width: 300px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-form[id="miFormulario"] {
-    flex-basis: 510px;
-    padding: 10px;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.input_field,.input_flex{
-    width: 100%;
+    gap: 10px;
     min-width: 180px;
+    animation-name: desvanecer; /* Nombre de la animación */
+    animation-duration: 2s; /* Duración de la animación */
+    animation-fill-mode: forwards; /* Mantener la opacidad del 0 una vez completada la animacion */
+    animation-delay: 1.5s;
+    animation-timing-function: ease;
 }
 
-.input_1,.input_2{
-   width: 48%;
+.text_nt {
+    font-size: 15px;
+    font-weight: 400;
 }
-.input_flex {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px;
-} 
-*/
+
+.ico_nt{
+    font-size: 30px;
+    color: yellow;
+}
+
+.icon_nt-not{
+    font-size: 30px;
+    color: red;
+}
 
 @media only screen and (max-width:1320px) {
     form[id="miFormulario"] {
@@ -337,7 +343,7 @@ form[id="miFormulario"] {
     }
 
     .main_mk {
-        min-height: 600px;
+        height: 800px;
     }
    
 } 
@@ -367,7 +373,13 @@ form[id="miFormulario"] {
     }
     
     .h1_title {
-        font-size: 30px;
-        
+        font-size: 33px;
     }
 } 
+
+
+@keyframes desvanecer {
+    0% { opacity: 1; } /* Comenzamos con una opacidad de 1 (totalmente visible) */
+    100%{ opacity: 0; } /* Terminamos con una opacidad de 0 (totalmente invisible) */
+  
+  }
