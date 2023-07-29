@@ -842,6 +842,12 @@ select.selec_order {
 
 }
 
+@media screen and (max-width: 450px) {
+    .list_item{
+        font-size: 13px;
+    }
+}
+
 /*animation load*/
 
 

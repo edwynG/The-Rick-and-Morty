@@ -376,6 +376,7 @@ h3.h3_sub {
 } 
 
 
+
 @keyframes desvanecer {
     0% { opacity: 1; } /* Comenzamos con una opacidad de 1 (totalmente visible) */
     100%{ opacity: 0; } /* Terminamos con una opacidad de 0 (totalmente invisible) */
