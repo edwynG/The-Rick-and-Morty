@@ -71,7 +71,14 @@
 
         card.addEventListener("click",(e)=> eventCardInfo(e))
        
-        
+        if(name.length > 16){
+            let arr = name.split(" ");
+            if(arr.length > 2) arr.pop()
+            if(arr.length >= 3) arr.pop()
+            if(arr.length >= 4) arr.pop()
+
+            name=arr.join(" ");
+        }
         let st = "card_st";
         if(status == "Alive") st="card_st life";
         if(status == "Dead") st="card_st dead";

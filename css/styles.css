@@ -3,8 +3,11 @@
     padding: 0px;
 
     box-sizing: border-box;
-    font-family: sans-ser-apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: 'Noto Sans KR', sans-serif;
 }
+
+
 
 :root {
     --property: #ff79c6;
@@ -19,7 +22,7 @@
     --inline-color: #476582;
     --fontzise: 18.5px;
     --natural: rgb(255, 255, 255);
-    --background_card: rgb(60, 62, 68);
+    --background_card: #3c3e44;
     --subtitle: rgb(158, 158, 158);
     --fontsize_subtile: 15.7px;
     --fontsize_text-subtitle: 18.2px;
@@ -32,6 +35,12 @@
     width: 100%;
     height: 100%;
     z-index: 10;
+}
+
+a{
+    text-decoration: none;
+    display: inline-block;
+    color: initial;
 }
 
 header, main{
@@ -63,7 +72,7 @@ header, main{
 }
 .list{
     flex-grow: 1;
-    
+
 }
 
 .list_item{
@@ -90,7 +99,7 @@ header, main{
    outline: 1px solid var(--numeric);
    border-radius: var(--radius);
    padding: 5px 1rem;
-   font-weight: 400;
+   font-weight: bold;
    transition: all 0.1s ease 0s
 
 }
@@ -137,7 +146,7 @@ header, main{
     background-color: var(--background);
     min-height: 50vh;
     padding-bottom: 30px;
-    
+
 }
 
 
@@ -213,10 +222,12 @@ header, main{
     display: flex;
     flex-direction: column;
     padding-left: 11px;
-    gap: 20px;
+    gap: 18px;
+    height: 100%;
 }
 
 .card_st{
+    margin-top: 3px;
     height: 10px;
     width: 10px;
     border-radius: 100%;
@@ -242,7 +253,7 @@ header, main{
 
 .card_status {
     display: flex;
-    gap: 4px;
+    gap: 8px;
     align-items: center;
 }
 
@@ -267,7 +278,7 @@ header, main{
 .card_dt-container > article {
     display: flex;
     flex-direction: column;
-    gap: var(--spacingObject);
+    gap: 2px;
 }
 
 
@@ -289,7 +300,7 @@ header, main{
 
         .search_character {
             width: clamp(200px,95%,791px);
-          
+
         }
 
         .dt-items {
@@ -298,7 +309,7 @@ header, main{
 }
 
 @media screen and (max-width: 445px) {
-    
+
     .dt-items {
         grid-auto-rows: 420px;
     }
@@ -645,7 +656,7 @@ h1.dev_info_name {
 
 .icon_mode:hover{
     background: #6262639c;
-    
+
 }
 
 .icon_mode:active{
@@ -756,7 +767,7 @@ select.selec_order {
     .textloadDiv{
         font-size: 55px;
     }
-    
+
 
 }
 
@@ -795,8 +806,8 @@ select.selec_order {
         border-radius: 0px;
         width: 100%;
         height: 100vh;
-       
-        
+
+
     }
 
     h1.dev_info_name {

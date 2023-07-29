@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
+    
     <title>The Rick and Morty API</title>
 </head>
 <body>
@@ -20,10 +31,12 @@
         </div>
         <div class="list">
             <ul class="list_items">
-                <li class="list_item">Docs</li>
-                <li class="list_item">About</li>
-               <a href="./html/form.html" style="text-decoration: none;display: inline-block;">
-                   <button type="button" class="list_item list_btn">contact us</button>
+                <li class="list_item">Character</li>
+                <a href="https://rickandmortyapi.com/">
+                    <li class="list_item">About API</li>
+                </a>
+               <a href="./html/form.html">
+                   <button type="button" class="list_item list_btn" style="font-family: 'Montserrat', sans-serif;">contact us</button>
                </a>
             </ul>
         </div>
@@ -35,7 +48,7 @@
             </div>
            <div class="search_container">
                <i class="fa-solid fa-magnifying-glass search_icon"></i>
-                <input type="text" name="search_characters" id="search_characters" class="search_character" placeholder="Search characters..">
+                <input type="text" name="search_characters" id="search_characters" class="search_character" placeholder="Search characters.." style="font-family: 'Montserrat', sans-serif;">
            </div>
             <div class="img_background_nav">
                 <img src="./img/RM.png" alt="The Rick and Morty" class="img_rm">
@@ -47,8 +60,8 @@
                     <select name="order" class="selec_order" id="miSelect"> 
                         <option value="A-Z" selected class="order-items">A-Z</option>
                         <option value="Z-A" class="order-items">Z-A</option>
-                        <option value="Tipo" class="order-items">Por Tipo</option>
-                        <option value="Status" class="order-items">Estado</option>
+                        <option value="Tipo" class="order-items">By type</option>
+                        <option value="Status" class="order-items">Status</option>
 
                     </select>
                 </section>

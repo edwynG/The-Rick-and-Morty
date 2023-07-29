@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    
 }
 
 :root {
@@ -17,10 +18,356 @@
     --inline-color: #476582;
     --fontzise: 18.5px;
     --natural: rgb(255, 255, 255);
-    --background_card: rgb(60, 62, 68);
+    --background_card: #3c3e44;
     --subtitle: rgb(158, 158, 158);
     --fontsize_subtile: 15.7px;
     --fontsize_text-subtitle: 18.2px;
     --spacingObject: 4px;
     --stopNext:#ffe8e8a6;
 }
+
+
+.title_form{
+    letter-spacing: 1px;
+    font-size: 70px;
+    font-family: 'Borel', sans-serif;
+}
+
+.input_field{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 580px;
+}
+
+.input_field  label{
+    
+font-family: 'Noto Sans KR', sans-serif;
+    position:absolute;
+    left: 0px;
+    pointer-events: none;
+    transition: all .3s ease;
+    font-weight: 100;
+    color: var(--backgound_opacity);
+    background-color: transparent;
+    font-weight: 100;
+    
+    
+}
+
+input:focus  ~ label{
+    color: var(--background);
+    transform: translateY(-24px);
+    z-index: 10;
+    background: none;
+  
+    
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    -webkit-text-fill-color: #333;
+  }
+
+input:valid ~ label {
+	
+    transform: translateY(-24px);
+    color: var(--background);
+}
+
+input[required] {
+    height: 45px;
+    width: 100%;
+    padding: 10px 0px  0px 0px;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    border-bottom: 1px solid #a69f9f8f;
+}
+
+/* input[required],textarea[name="message"]{
+    
+} */
+textarea[name="message"]{
+    resize: none;
+    height: 180px;
+    overflow: auto;
+    width: 100%;
+    padding: 18px  0px;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    border-bottom: 1px solid #a69f9f8f;
+ 
+
+}
+
+textarea[name="message"] ~ label{
+    align-self: flex-start;
+    left: 0px;
+    padding-top: 8px;
+}
+
+textarea[name="message"]:valid ~ label {
+	
+    transform: translateY(-15px);
+    color: var(--background);
+}
+
+textarea[name="message"]:focus ~ label{
+    transform: translateY(-15px);
+    z-index: 10;
+    
+    color: var(--background);
+    
+}
+
+
+ .main_form{
+    display: flex;
+    height: calc(100vh - 61px);
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.form_container{
+    flex-grow: 1;
+    padding: 10px;
+    min-width: 620px;
+    display: flex;
+}
+
+.main_mk{
+    flex-grow: 1;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 60px;
+    max-width: 800px;
+    height: 100%;
+    width: 40%;
+} 
+
+form[id="miFormulario"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 26px;
+    position: relative;
+    background-color: var(--natural);
+    margin: auto;
+    flex-basis: 100%;
+}
+
+.input_flex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 25px;
+    max-width: 580px;
+}
+
+.info_img_c {
+    width: 80px;
+    height: 80px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 100%;
+}
+
+.dt_text {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: space-around;
+    gap: 6px;
+}
+
+.h1_title {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+h4.h4_sub {
+    margin-top: 10px;
+}
+
+.main_text_sub h3, .main_text_sub h4 {
+    font-weight: 100;
+}
+
+.info_dt {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    height: 100px;
+    justify-content: center;
+}
+
+.h4_sub_enlace,.h4_enlace_info {
+    font-weight: bold !important;
+    padding-bottom: 3px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 4px 0px;
+    transition: all .3s ease;
+}
+
+.h4_sub_enlace:hover {
+    color: var(--numeric);
+    border-bottom: 1px solid var(--background_card);
+}
+
+.h4_enlace_info:hover {
+    color: var(--numeric);
+    border-bottom: 1px solid var(--background_card);
+}
+
+.info_dt h4 {
+    font-weight: 100;
+}
+
+.info_extra {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+h3.h3_sub {
+    max-width: 100%;
+    width: 500px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main_text_sub {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 130px;
+}
+
+#btn_submit {
+    border: none;
+    background-color: var(--background_card);
+    color: var(--natural);
+    width: 100%;
+    max-width: 450px;
+    border-radius: 30px;
+    padding: 15px 10px;
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .3s ease;
+    box-shadow: 0px 17px 52px 0px rgba(0,0,0,0.21);
+    margin: 5px;
+}
+
+#btn_submit:hover{
+    background-color:rgb(48, 48, 49);
+}
+
+#btn_submit:active{
+    background-color:rgb(71, 71, 73);
+}
+
+.div_img-dta{
+    transition: all .5s ease;
+    background-image: url("https://i.pinimg.com/564x/2e/ef/e7/2eefe79c1c5b902bc92f79aa7e9f0a84.jpg");
+    height: 180px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    background-position: 0px -541px;
+    margin: 5px 5px 5px 0px;
+}
+
+
+/* .form_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+form[id="miFormulario"] {
+    flex-basis: 510px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.input_field,.input_flex{
+    width: 100%;
+    min-width: 180px;
+}
+
+.input_1,.input_2{
+   width: 48%;
+}
+.input_flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+} 
+*/
+
+@media only screen and (max-width:1320px) {
+    form[id="miFormulario"] {
+        flex-basis: 100%;
+    }
+}
+
+
+@media only screen and (max-width:800px) {
+    .form_container{
+        min-width: 100%;
+    }
+
+    .main_mk {
+        min-height: 600px;
+    }
+   
+} 
+
+@media only screen and (max-width:600px) {
+    
+    .input_flex {
+        flex-wrap: wrap;
+    }
+    .input_1 ,.input_2{
+        width: 100%;
+    }
+    .h1_title {
+        font-size: 35px;
+        
+    }
+} 
+
+
+@media only screen and (max-width:500px) {
+    .main_mk{
+        padding: 0px 5px;
+    }
+
+    form[id="miFormulario"] {
+        padding: 0px;
+    }
+    
+    .h1_title {
+        font-size: 30px;
+        
+    }
+} 
