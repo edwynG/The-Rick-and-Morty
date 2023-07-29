@@ -58,7 +58,8 @@ const sendNotification= (mg,bool=true) =>{
                     `;
     div.innerHTML=content;
     document.body.appendChild(div);
-    setTimeout(()=>{
-        document.querySelector(".notification").remove();
-    },5000)
+    // setTimeout(()=>{
+    //     document.querySelector(".notification").remove();
+    // },5000)
 }
+

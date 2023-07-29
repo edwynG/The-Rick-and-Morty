@@ -291,7 +291,7 @@ h3.h3_sub {
 }
 
 .notification {
-    position: absolute;
+    position: fixed;
     bottom: 1%;
     right: 1%;
     background-color: #3f4042;
