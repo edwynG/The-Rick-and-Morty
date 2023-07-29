@@ -308,11 +308,8 @@ h3.h3_sub {
     align-items: center;
     gap: 10px;
     min-width: 180px;
-    animation-name: desvanecer; /* Nombre de la animación */
-    animation-duration: 2s; /* Duración de la animación */
-    animation-fill-mode: forwards; /* Mantener la opacidad del 0 una vez completada la animacion */
-    animation-delay: 1.5s;
-    animation-timing-function: ease;
+    animation: desvanecer 2.5s 2s forwards ease; 
+
 }
 
 .text_nt {
