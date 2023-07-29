@@ -309,6 +309,7 @@ h3.h3_sub {
     gap: 10px;
     min-width: 180px;
     animation: desvanecer 2.5s 2s forwards ease; 
+    z-index: 30000;
 
 }
 
