@@ -217,8 +217,9 @@ h4.h4_sub {
     padding-bottom: 3px;
     font-weight: bold;
     display: inline-block;
-    margin: 4px 0px;
+    margin: 2px 0px;
     transition: all .3s ease;
+    height: 25px;
 }
 
 .h4_sub_enlace:hover {
