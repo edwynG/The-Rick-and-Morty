@@ -126,7 +126,7 @@ textarea[name="message"]:focus ~ label{
 
  .main_form{
     display: flex;
-    height: calc(100vh - 61px);
+    /*height: calc(100vh - 61px);*/
     flex-wrap: wrap;
     gap: 30px;
     max-width: 1900px;
@@ -328,9 +328,21 @@ h3.h3_sub {
     color: red;
 }
 
+
 @media only screen and (max-width:1320px) {
     form[id="miFormulario"] {
         flex-basis: 100%;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .main_form{
+        height: max-content;
+        gap: 5px
+    }
+
+    .main_mk{
+        min-height: 660px;
     }
 }
 
@@ -341,7 +353,9 @@ h3.h3_sub {
     }
 
     .main_mk {
-        height: 800px;
+        height: 650px;
+        padding: 0px 5px;
+
     }
    
 } 
@@ -362,9 +376,7 @@ h3.h3_sub {
 
 
 @media only screen and (max-width:500px) {
-    .main_mk{
-        padding: 0px 5px;
-    }
+    
 
     form[id="miFormulario"] {
         padding: 0px;
