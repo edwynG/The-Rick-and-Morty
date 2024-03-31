@@ -1,0 +1,35 @@
+
+.nav-container{
+
+    flex-basis: 60%;
+    
+}
+
+.nav-ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    height: 100%;
+    padding: var(--padding_global);
+ 
+}
+.nav-ul_li{
+    padding: var(--padding_global);
+}
+.nav-ul_li>a {
+   font-weight: bold;
+    font-size: var(--fontSize_large);
+    transition: all 100ms ease-in-out;
+}
+
+.nav-ul_li>a:hover{
+    color: var(--color_hover);
+}
+
+
+.btn_nav:hover{
+    background-color: var(--color_hover);
+    color: var(--color_text_primary);
+}
+

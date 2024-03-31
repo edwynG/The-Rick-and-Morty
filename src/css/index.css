@@ -1,0 +1,43 @@
+
+:root{
+  --padding_global: 9px;
+  --margin_global: 5px;
+  --fontSize_small:12px;
+  --fontSize_normal:14px;
+  --fontSize_large:18.5;
+  --bg_card_global: #3c3e44;
+  --bg_primary_global:#ffff;
+  --bg_secundary_global:#272b33;
+  --bg_third_global:#202329;
+  --bg_opacity_global: #0202025c;
+  --color_text_global: #202329;
+  --color_text_primary: #ffff;
+  --color_text_secundary: #9e9e9e;
+  --color_hover: #ff9800;
+  --color_live_true:#4cff8f;
+  --color_live_false:#d63d2e; 
+  --color_live_null:#9e9e9e;
+
+
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR',monospace ,sans-serif;
+  color: var(--color_text_global);
+}
+
+
+
+ul {
+  list-style: none;
+}
+body{
+  position: relative;
+  height: 100vh;
+}
+a {
+  text-decoration: none;
+}

@@ -1,12 +1,20 @@
-import React,{useContext} from "react";
-import "./css/App.css"
+import React, { useContext } from "react";
+import "./css/App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { context } from "./context/context";
+import AppBar from "./components/AppBar";
+import Footer from "./components/Footer";
+import MainContent from "./components/MainContent";
 
 function App() {
   const { count, setCount } = useContext(context);
   return (
     <>
-      <h1 className="App" onClick={()=> setCount(count+1)}>Develorment in.. {count}</h1>
+      <Router>
+        <AppBar />
+        <MainContent />
+        <Footer />
+      </Router>
     </>
   );
 }

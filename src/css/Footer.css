@@ -1,0 +1,13 @@
+.Footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    /* background: var(--bg_third_global); */
+    color: var(--color_text_secundary);
+    padding: 4.5rem 0px;
+    min-height: 120px;
+    width: 100%;
+   max-height: 100%;
+
+}

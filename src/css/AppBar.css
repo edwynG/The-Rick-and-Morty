@@ -1,0 +1,21 @@
+.Header{
+    position: sticky;
+    top: 0;
+    background-color: var(--bg_primary_global);
+    z-index: 10;
+}
+
+.header-container{
+    height: 60px;
+    padding: var(--padding_global) calc(var(--padding_global)*2);
+    display: flex;
+    justify-content: space-between;
+}
+.header-container_logo{
+    align-self: center;
+
+}
+
+.header-logo{
+    width: 42px;
+}
