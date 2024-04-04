@@ -1,12 +1,12 @@
 import React from 'react'
 import ContentClasic from './Home component/ContentClasic'
 
-function Characters() {
+function Episodes() {
   return (
     <ContentClasic>
-      <div>Characters</div>
+        <div>Episodes</div>
     </ContentClasic>
   )
 }
 
-export default Characters
+export default Episodes

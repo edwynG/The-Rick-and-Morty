@@ -1,12 +1,12 @@
 import React from 'react'
 import ContentClasic from './Home component/ContentClasic'
 
-function Characters() {
+function Locations() {
   return (
     <ContentClasic>
-      <div>Characters</div>
+      <div>Locations</div>
     </ContentClasic>
   )
 }
 
-export default Characters
+export default Locations

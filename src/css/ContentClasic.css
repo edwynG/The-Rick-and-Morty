@@ -1,0 +1,78 @@
+.ContentClasic {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    min-height: 720px;
+  }
+
+  .bg-color_md {
+    background-color: var(--bg_secundary_global);
+    position: absolute;
+    min-height: 250px;
+    z-index: -1;
+    height: 65.5%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .bg_img{
+      position: absolute;
+      z-index: -1;
+      min-height: 180px;
+      height: 34.5%;
+      left: 0;
+      right: 0;
+      top: 0;
+      background-image: url("../image/img_body-bg_transparent.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+  
+  }
+
+  @media (width <= 960px) {
+    .bg_img {
+      height: 34%;
+    }
+    .bg-color_md{
+      height: 66%;
+    }
+  }
+
+  @media (width <= 963px) {
+    .bg_img {
+      height: 33%;
+    }
+    .bg-color_md{
+      height: 67%;
+    }
+  }
+
+  @media (width <= 777px) {
+    .bg_img {
+      height: 42%;
+    }
+    .bg-color_md{
+      height: 58%;
+    }
+  }
+
+  @media (width <= 640px) {
+    .bg_img {
+      height: 33%;
+    }
+    .bg-color_md{
+      height: 67%;
+    }
+  }
+
+  @media (width <= 545px) {
+    .bg_img {
+      height: 28%;
+    }
+    .bg-color_md{
+      height: 72%;
+    }
+  }

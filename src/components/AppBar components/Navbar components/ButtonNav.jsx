@@ -3,29 +3,32 @@ import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import "../../../css/ButtonNav.css";
 
-const ButtonNav = ({ text, link }) => {
-  const [active, setActive] = useState(true);
+const ButtonNav = ({ text, link, responsive = true,style={} }) => {
+  const [active, setActive] = useState(false);
 
   const handlerResize = () => {
     let width = window.innerWidth;
-    if ( width <= 770) {
+    if ((width <= 920 )&& (width > 560)) {
       setActive(true);
     } else {
       setActive(false);
     }
   };
-  window.addEventListener("resize", () => handlerResize());
-  useEffect(() => {
-    handlerResize();
-    window.addEventListener("resize", () => handlerResize());
-    return () => {
-      window.removeEventListener("resize", () => handlerResize());
-    };
-  }, []);
+
+  if (responsive) {
+    useEffect(() => {
+      handlerResize();
+      window.addEventListener("resize", () => handlerResize());
+      return () => {
+        window.removeEventListener("resize", () => handlerResize());
+      };
+    }, []);
+  }
+  let query = responsive ? "btn_nav btn_nav-responsive" : "";
 
   return (
     <Link to={link}>
-      <button type="button" className="btn_nav" title={text}>
+      <button type="button" className={active ? query : "btn_nav"} title={text} style={style}>
         {active ? <FaHeart className="btn-icon" /> : text}
       </button>
     </Link>
