@@ -6,8 +6,8 @@
 }
 
 .header-container{
-    height: 60px;
-    padding: var(--padding_global) calc(var(--padding_global)*2);
+    height: max-content;
+    padding: 0px calc(var(--padding_global)*2);
     display: flex;
     justify-content: space-between;
 }

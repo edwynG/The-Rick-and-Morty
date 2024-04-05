@@ -45,7 +45,7 @@
 }
 
 .icon_open-responsive:hover{
-    background-color: var(--bg_opacity_global);
+    background-color: var(--bg_opacity_secundary);
 }
 
 .container-icon_close-responsive{

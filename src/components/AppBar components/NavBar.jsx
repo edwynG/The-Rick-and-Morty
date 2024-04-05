@@ -17,7 +17,7 @@ function NavBar() {
       setResponsive(true);
     } else {
       setResponsive(false);
-      setClose(true);
+      setClose(false);
     }
   };
 
@@ -42,9 +42,9 @@ function NavBar() {
     <nav className="nav-container">
       {responsive ? (
         <>
-          <div className="container-icon_close-responsive">
+          <div className="container-icon_open-responsive">
             <GiHamburgerMenu
-              className="icon_close-responsive"
+              className="icon_open-responsive"
               onClick={handlerClickOpen}
             />
           </div>
@@ -55,18 +55,18 @@ function NavBar() {
       <ul
         className={
           close
-            ? "nav-ul responsive-ul "
-            : "nav-ul responsive-ul nav-ul_responsive"
+            ? "nav-ul responsive-ul nav-ul_responsive"
+            : "nav-ul responsive-ul "
         }
       >
         {responsive ? (
           <>
-            <di className="container-icon_close-responsive">
+            <div className="container-icon_close-responsive">
               <IoCloseSharp
                 onClick={handlerClickClose}
                 className="icon_close-responsive"
               />
-            </di>
+            </div>
           </>
         ) : (
           ""
@@ -76,14 +76,14 @@ function NavBar() {
             <Link
               key={obj.name}
               to={obj.href}
-              onClick={responsive ? handlerClickClose : ""}
+              onClick={responsive ? handlerClickClose : null}
             >
               {obj.name}
             </Link>
           </li>
         ))}
 
-        <span onClick={responsive ? handlerClickClose : ""}>
+        <span onClick={responsive ? handlerClickClose : null}>
           {
             <ButtonNav
               text={"CONTACT US"}

@@ -16,7 +16,7 @@
     right: 0;
     bottom: 0;
   }
-  
+
   .bg_img{
       position: absolute;
       z-index: -1;
@@ -29,19 +29,10 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center bottom;
-  
+
   }
 
-  @media (width <= 960px) {
-    .bg_img {
-      height: 34%;
-    }
-    .bg-color_md{
-      height: 66%;
-    }
-  }
-
-  @media (width <= 963px) {
+   @media (width <= 960px) {
     .bg_img {
       height: 33%;
     }
@@ -50,29 +41,30 @@
     }
   }
 
-  @media (width <= 777px) {
+  @media (width <= 792px) {
     .bg_img {
-      height: 42%;
+      height: 41.5%;
     }
     .bg-color_md{
-      height: 58%;
+      height: 58.5%;
     }
   }
 
-  @media (width <= 640px) {
+  @media (width <= 655px) {
     .bg_img {
-      height: 33%;
+      height: 33.5%;
     }
     .bg-color_md{
-      height: 67%;
+      height: 67.5%;
     }
   }
 
-  @media (width <= 545px) {
+
+  @media (width < 545px) {
     .bg_img {
-      height: 28%;
+      height: 28.1%;
     }
     .bg-color_md{
-      height: 72%;
+      height: 71.8%;
     }
   }

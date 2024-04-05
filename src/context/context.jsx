@@ -1,4 +1,4 @@
-import React, { createContext, useMemo, useState } from "react";
+import React, { createContext, useMemo, useRef, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
@@ -76,6 +76,8 @@ let socialNetworks = [
 
 export function ContextProvider(props) {
   const [serverActions, setServerActions] = useState(true);
+  const  backgroundImg = useRef()
+  const  backgroundColor = useRef()
 
   let show = {
     serverActions,
@@ -85,6 +87,8 @@ export function ContextProvider(props) {
     sections,
     urlRouter,
     requestApi,
+    backgroundImg,
+    backgroundColor,
   };
   return <context.Provider value={show}>{props.children}</context.Provider>;
 }

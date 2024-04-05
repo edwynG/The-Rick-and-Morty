@@ -12,6 +12,8 @@ import { PiTelevisionFill } from "react-icons/pi";
 let config = {
   padding: "18px 70px",
   fontSize: "16px",
+  backgroundColor:"var(--color_hover)",
+  color:"var(--color_text_primary)"
 };
 
 function Home() {
@@ -62,7 +64,7 @@ function Home() {
           {informationCard.map((obj, i) => {
             return (
               <Link to={obj.to} key={i}>
-                <CardSample content={obj} style={{ cursor: "pointer",  width:"290px", }} />;
+                <CardSample content={obj} style={{ cursor: "pointer",  width:"290px",}} />;
               </Link>
             );
           })}
