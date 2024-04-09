@@ -20,7 +20,7 @@
 
 .card-section_details {
   flex-grow: 1;
-  flex-basis: 65%;
+  flex-basis: 58.5%;
   height: max-content;
   padding: var(--padding_global);
   color: inherit;
@@ -51,14 +51,25 @@
     gap: 5px;
     align-items: center;
     font-weight: normal;
+    font-size: 15px;
 }
 
 .card-status_live{
-    background-color: red;
     border-radius: 50%;
     padding: 4px;
 }
 
+.bg-dead{
+  background-color: var(--color_live_false);
+}
+
+.bg-live{
+  background-color: var(--color_live_true);
+}
+
+.bg-null{
+  background-color: var(--color_live_null);
+}
 .card-description{
     color: var(--color_text_secundary);
     font-weight: bolder;

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../css/Home.css";
 import ButtonNav from "../AppBar components/Navbar components/ButtonNav";
 import { context } from "../../context/context";
@@ -12,28 +12,41 @@ import { PiTelevisionFill } from "react-icons/pi";
 let config = {
   padding: "18px 70px",
   fontSize: "16px",
-  backgroundColor:"var(--color_hover)",
-  color:"var(--color_text_primary)"
+  backgroundColor: "var(--color_hover)",
+  color: "var(--color_text_primary)",
 };
 
 function Home() {
   let { urlRouter } = useContext(context);
+  const [Width, setWidth] = useState(340);
+
+  const handlerWidth = () =>
+    window.innerWidth < 370 ? setWidth(270) : setWidth(340);
+
+  useEffect(() => {
+    handlerWidth();
+    window.addEventListener("resize", handlerWidth);
+
+    return () => {
+      window.removeEventListener("resize", handlerWidth);
+    };
+  }, []);
 
   let informationCard = [
     {
-      svg: <FaGhost style={{color:"#ffff"}}/>,
+      svg: <FaGhost style={{ color: "#ffff" }} />,
       title: "Characters",
       content: "You can search for your favorite characters",
       to: urlRouter.characters,
     },
     {
-      svg: <IoLocationSharp/>,
+      svg: <IoLocationSharp />,
       title: "Locations",
       content: "You discover the details of the locations",
       to: urlRouter.locations,
     },
     {
-      svg: <PiTelevisionFill/>,
+      svg: <PiTelevisionFill />,
       title: "Episodes",
       content: "Read details about the episodes of the series",
       to: urlRouter.episodes,
@@ -64,7 +77,11 @@ function Home() {
           {informationCard.map((obj, i) => {
             return (
               <Link to={obj.to} key={i}>
-                <CardSample content={obj} style={{ cursor: "pointer",  width:"290px",}} />;
+                <CardSample
+                  content={obj}
+                  style={{ cursor: "pointer", width: Width }}
+                />
+                ;
               </Link>
             );
           })}

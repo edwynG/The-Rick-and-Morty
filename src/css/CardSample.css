@@ -32,3 +32,10 @@
 .card-container div svg{
     fill: #ffff;
 }
+
+
+.card-container div img{
+    width: 60px;
+    object-fit: cover;
+    border-radius: 100%;
+}

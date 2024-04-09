@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   let { requestApi,sections, socialNetworks ,serverActions,setServerActions} = useContext(context);
 
-  if (requestApi.status == 503) {
+  if (!requestApi.status) {
     setServerActions(false)
   }
 

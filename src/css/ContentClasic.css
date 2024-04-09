@@ -11,7 +11,7 @@
     position: absolute;
     min-height: 250px;
     z-index: -1;
-    height: 65.5%;
+    height: calc(100% - 300px);
     left: 0;
     right: 0;
     bottom: 0;
@@ -21,7 +21,7 @@
       position: absolute;
       z-index: -1;
       min-height: 180px;
-      height: 34.5%;
+      height: 300px;
       left: 0;
       right: 0;
       top: 0;
@@ -31,7 +31,7 @@
       background-position: center bottom;
 
   }
-
+/* 
    @media (width <= 960px) {
     .bg_img {
       height: 33%;
@@ -67,4 +67,4 @@
     .bg-color_md{
       height: 71.8%;
     }
-  }
+  } */

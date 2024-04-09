@@ -1,0 +1,25 @@
+.Loanding-container{
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    
+}
+
+.Loanding-container > img{
+    width: 100%;
+    object-fit: cover;
+    animation: rotate;
+    animation-duration: 2000ms;
+    animation-delay: 100ms;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg)  ;
+      }
+      to {
+        transform: rotate(360deg) ;
+      }
+}

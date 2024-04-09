@@ -5,17 +5,23 @@ import { FaHeart } from "react-icons/fa";
 import { getAxios, getAxiosMutiple, handlerRequesteInstance } from "../API/API";
 
 export const context = createContext();
-
+let countCharacters = 0;
+let countLocations = 0;
+let countEpisodes = 0;
 // Date API
 let requestApi = await handlerRequesteInstance();
-let { characters, locations, episodes } = requestApi.data;
 
-
-let [charactersData, locationsData, episodesData] = await getAxiosMutiple([
-  getAxios(characters),
-  getAxios(locations),
-  getAxios(episodes),
-]);
+if (requestApi.data != null) {
+  let { characters, locations, episodes } = requestApi.data;
+  let [charactersData, locationsData, episodesData] = await getAxiosMutiple([
+    getAxios(characters),
+    getAxios(locations),
+    getAxios(episodes),
+  ]);
+  countCharacters = charactersData.data.info.count;
+  countLocations = locationsData.data.info.count;
+  countEpisodes = episodesData.data.info.count;
+}
 
 // router
 let urlRouter = {
@@ -39,20 +45,19 @@ const url = [
 let sections = [
   {
     key: "CHARACTERS",
-    value: charactersData.data.info.count,
+    value: countCharacters,
     url: urlRouter.characters,
   },
   {
     key: "LOCATIONS",
-    value: locationsData.data.info.count,
+    value: countLocations,
     url: urlRouter.locations,
   },
   {
     key: "EPISODES",
-    value: episodesData.data.info.count,
+    value: countEpisodes,
     url: urlRouter.episodes,
   },
-  
 ];
 
 let socialNetworks = [
@@ -76,8 +81,6 @@ let socialNetworks = [
 
 export function ContextProvider(props) {
   const [serverActions, setServerActions] = useState(true);
-  const  backgroundImg = useRef()
-  const  backgroundColor = useRef()
 
   let show = {
     serverActions,
@@ -87,8 +90,6 @@ export function ContextProvider(props) {
     sections,
     urlRouter,
     requestApi,
-    backgroundImg,
-    backgroundColor,
   };
   return <context.Provider value={show}>{props.children}</context.Provider>;
 }
