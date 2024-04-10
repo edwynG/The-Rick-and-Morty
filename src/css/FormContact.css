@@ -1,0 +1,210 @@
+.Form-container {
+  display: grid;
+  gap: 18px;
+  align-content: space-evenly;
+  min-height: 560px;
+  justify-content: space-around;
+  background-color: var(--bg_card_global);
+  box-shadow: var(--box_shadow_global);
+  border-radius: 16px;
+  padding: 15px 20px;
+  fill: var(--color_text_primary);
+  color: var(--color_text_primary);
+  max-width: 510px;
+  box-shadow: var(--box_shadow_global);
+  width: 100%;
+}
+
+.Form-inputs_container {
+  display: grid;
+  gap: 10px;
+  color: inherit;
+  fill: inherit;
+  color: inherit;
+  flex-direction: column;
+  grid-template-areas:
+    "name lastname"
+    "email subject"
+    "message message";
+}
+
+.name {
+  grid-area: name;
+}
+
+.lastname {
+  grid-area: lastname;
+}
+
+.email {
+  grid-area: email;
+}
+
+.subject {
+  grid-area: subject;
+}
+
+.message {
+  grid-area: message;
+}
+
+.inputs_container_label {
+  display: grid;
+  color: inherit;
+  fill: inherit;
+  position: relative;
+}
+
+.Form-title {
+  color: inherit;
+}
+
+.inputs_container_label > *,
+.Form-title > *,
+.Form-title > h3 > span {
+  color: inherit;
+}
+
+.inputs_container_label > input,
+.inputs_container_label > textarea {
+  border-radius: 10px;
+  transition: all 300ms ease;
+}
+.inputs_container_label > input:focus ~ span,
+.inputs_container_label > input:valid ~ span,
+.inputs_container_label > textarea:valid ~ span,
+.inputs_container_label > textarea:focus ~ span {
+  transform: translateY(-16px);
+  font-size: 9.4px;
+  margin: 5px 0px;
+  color: #bab5b5;
+}
+
+/* .inputs_container_label > input:user-invalid ~ span,
+.inputs_container_label > textarea:user-invalid ~ span {
+  transform: translateY(-16px);
+  font-size: 9.4px;
+  margin: 5px 0px;
+  color: #bab5b5;
+} */
+.inputs_container_label > input:focus ~ svg {
+  fill: var(--color_hover);
+}
+
+.valide {
+  transform: translateY(-14px);
+  font-size: 9.4px;
+  margin: 5px 0px;
+  color: #bab5b5;
+}
+
+.inputs_container_label > textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  background-color: #5a5a5ab0;
+  border: none;
+  outline: none;
+  padding: 20px 13px;
+}
+
+.inputs_container_label > input {
+  background-color: #5a5a5ab0;
+  border: none;
+  padding: 20px 13px;
+  padding-right: 40px;
+  width: 100%;
+}
+.inputs_container_label > span {
+  position: absolute;
+  padding: 15px 13px;
+  transition: all 300ms ease;
+  font-size: 15px;
+}
+
+.inputs_container_label > input:focus,
+.inputs_container_label > textarea:focus {
+  outline: 1px solid var(--color_hover);
+}
+
+.inputs_container_label > svg {
+  position: absolute;
+  fill: inherit;
+  margin: 5px;
+  top: 10px;
+  font-size: 22px;
+  right: 5px;
+}
+
+.Form-btn_container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn_send {
+  border: none;
+  padding: 10px 15px;
+  min-width: 160px;
+  width: 38%;
+  height: 43px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--color_text_primary);
+  background-color: var(--color_hover);
+  box-shadow: var(--box_shadow_global);
+  text-align: center;
+  transition: background 400ms ease;
+}
+.btn_send:hover {
+  background: #d28614;
+}
+.Form-title {
+  display: grid;
+  gap: 8px;
+}
+
+.title_h3 {
+  font-size: 12px;
+  font-weight: bold;
+  color: #bab5b5;
+  position: relative;
+  top: 15px;
+}
+
+.title_h2 {
+  font-size: 50px;
+}
+
+.title_h4 {
+  font-size: 10px;
+  color: #bab5b5;
+  height: 20px;
+}
+
+.title_h4 > a {
+  color: var(--color_text_primary);
+  cursor: pointer;
+}
+
+.title_h4 > a:hover {
+  color: var(--color_hover);
+
+  border-bottom: 1px solid var(--color_hover);
+}
+
+@media (width < 500px) {
+  .Form-container {
+    justify-content: stretch;
+  }
+  .Form-inputs_container {
+    grid-template-areas:
+      "name name"
+      "lastname lastname"
+      "email email"
+      "subject subject"
+      "message message";
+  }
+}

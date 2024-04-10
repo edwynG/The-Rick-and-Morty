@@ -2,9 +2,9 @@
 
 import axios from "axios";
 
+
 export const instance = axios.create({
   baseURL: "https://rickandmortyapi.com/api",
-  timeout: 10000,
 });
 
 export const getAxios = async (url) => {
@@ -22,7 +22,6 @@ export const handlerRequesteInstance = async () => {
     return res;
   } catch (error) {
     return { data: null, status: false, error: error };
-
   }
 };
 
@@ -33,4 +32,19 @@ export const getAxiosMutiple = async (url_arr) => {
   } catch (err) {
     return err;
   }
+};
+
+export const messageSend = async (name,lname,mg,email,subject = "¡Nuevo envío!") => {
+    try {
+      // let result = await emailjs.send("service_9pki6ur","template_decage7",{
+      //   user_name: "g",
+      //   message: "f",
+      //   user_email: "g",
+      //   from_name: "fg",
+      //   });
+
+        console.log(result)
+    } catch (error) {
+      console.log(result)
+    }
 };

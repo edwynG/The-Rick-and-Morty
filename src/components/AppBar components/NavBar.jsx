@@ -27,6 +27,7 @@ function NavBar() {
 
   const handlerClickClose = () => {
     setClose(!close);
+    
   };
 
   useEffect(() => {

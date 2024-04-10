@@ -13,11 +13,13 @@
     text-align: center; 
     padding: 5px;
     box-shadow: var(--box_shadow_global);
+    color: var(--color_text_primary);
+    fill: var(--color_text_primary);
    
 }
 
 .card-container > *{
-    color: var(--color_text_primary);
+    color: inherit;
 }
 
 .card-container h4{
@@ -30,7 +32,7 @@
 }
 
 .card-container div svg{
-    fill: #ffff;
+    fill: inherit;
 }
 
 

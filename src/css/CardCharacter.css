@@ -84,10 +84,11 @@
   height: auto;
 }
 
-@media (width <= 570px) {
+@media (width <= 600px) {
   .container-card {
     min-width: 200px;
     height: 100%;
+    width: 100%;
     margin: calc(var(--margin_global) * 3) calc(var(--margin_global) * 3);
   }
 

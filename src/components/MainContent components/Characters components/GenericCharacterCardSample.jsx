@@ -8,7 +8,7 @@ function GenericCharacterCardSample({ characters }) {
       {characters.map((card) => {
         return (
           <CardSample
-            style={{ width: 270 }}
+            style={{ maxWidth: 320 ,flexGrow:1}}
             key={card.id}
             content={{
               title: card.name,

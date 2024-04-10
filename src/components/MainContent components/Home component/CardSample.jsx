@@ -1,13 +1,14 @@
 import React from "react";
 import "../../../css/CardSample.css";
 
-function CardSample({ content , style={} , extra=""}) {
+function CardSample({ content , style={} , extra="", hover=""}) {
   return (
-    <div className="card-container" key={content.title} style={style}>
-      <div>{content.svg}</div>
+    <div className={"card-container " + hover} key={content.title} style={style}>
+      <div style={{fill:"inherit"}}>{content.svg}</div>
+      <h4  style={{color:"inherit"}}>{content.title}</h4>
+      <p  style={{colo:"inherit"}}>{content.content}</p>
       <>{extra}</>
-      <h4>{content.title}</h4>
-      <p>{content.content}</p>
+
     </div>
   );
 }

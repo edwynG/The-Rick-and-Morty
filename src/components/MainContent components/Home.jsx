@@ -63,7 +63,11 @@ function Home() {
                 Discover details you didn't know about your favorite character.
               </p>
               <h1>The Rick and Morty</h1>
-              <h2>Characters</h2>
+              <div>
+                <h2 className="animation-title">
+                  Characters
+                </h2>
+              </div>
             </span>
             <ButtonNav
               text={"Let's start now"}
@@ -80,6 +84,7 @@ function Home() {
                 <CardSample
                   content={obj}
                   style={{ cursor: "pointer", width: Width }}
+                  hover="card_hover"
                 />
                 ;
               </Link>

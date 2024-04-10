@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useLayoutEffect, useState } from "react";
 import "../../css/Characters.css";
 import ContentClasic from "./Home component/ContentClasic";
 import { context } from "../../context/context";
@@ -11,6 +11,7 @@ import GenericCharctersCard from "./Characters components/GenericCharctersCard";
 import GenericCharacterCardSample from "./Characters components/GenericCharacterCardSample";
 import NoFountCard from "./Characters components/NoFountCard";
 import Loanding from "./Characters components/Loanding";
+import loandingIMG from "../../image/Loandig-icon.png";
 
 const arrayDivider = (arr, divider) => {
   let cant = Math.ceil(arr.length / divider);
@@ -43,21 +44,16 @@ function Characters() {
     try {
       let data = await getAxios(url);
       let matriz = arrayDivider(data.data.results, divider);
-      console.log(data)
       setCharacterNext(matriz);
       setObjectAPI(data.data);
       setTimeout(() => {
-        setLoad(false)
+        setLoad(false);
         setCharacters(matriz[0]);
         setPages(0);
         setFound(true);
       }, 800);
-
-      if (localStorage.getItem("CardType") != null) {
-        setTypeBox(localStorage.getItem("CardType"));
-      }
     } catch (error) {
-      setLoad(false)
+      setLoad(false);
       setFound(false);
     }
   };
@@ -82,8 +78,11 @@ function Characters() {
     window.scroll({ top: 100, left: 100, behavior: "smooth" });
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetchCharacters();
+    if (localStorage.getItem("CardType") != null) {
+      setTypeBox(localStorage.getItem("CardType") == "true" ? true : false);
+    }
   }, []);
 
   return (
@@ -93,15 +92,25 @@ function Characters() {
     >
       <section className="container-characters">
         <section className="characters-options">
-          <h2 style={{ fontSize: 60, padding: 10 }}>Chatacters</h2>
+          <h2 style={{ fontSize: 60, padding: 10 }} className="animation-title">
+            Chatacters
+          </h2>
           <div className="container-inputs">
             <label className="lable_text">
-              <input
-                type="text"
-                name="Search"
-                placeholder="Search character..."
-                onChange={(e) => setInputSearch(e.target.value)}
-              />
+              <label>
+                <input
+                  type="text"
+                  name="Search"
+                  required
+                  onChange={(e) => setInputSearch(e.target.value)}
+                  onKeyDown={(e)=>{
+                    if(e.key === "Enter" && inputSearch != ""){
+                      fetchCharacters("?name=" + inputSearch)
+                    }
+                  }}
+                />
+                <span className="focus_text-input">Search character</span>
+              </label>
               <button
                 type="button"
                 className="btn_search"
@@ -141,7 +150,7 @@ function Characters() {
         <section className="container-content">
           {load && (
             <span className="loanding_character">
-              <Loanding />
+              <Loanding image={loandingIMG} />
             </span>
           )}
           <div className="characters-cards">
@@ -154,7 +163,7 @@ function Characters() {
             {!found && !load && <NoFountCard />}
           </div>
 
-          {found  && !load && (
+          {found && !load && (
             <div className="container-btn_characters">
               <ButtonPages
                 conditionClassname={

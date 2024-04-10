@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Routes , Route } from "react-router-dom";
+import React, { useContext, useEffect } from 'react'
+import { Routes , Route, useLocation } from "react-router-dom";
 import "../css/MainContent.css"
 import Characters from './MainContent components/Characters';
 import Contact from './MainContent components/Contact';
@@ -10,6 +10,7 @@ import Episodes from './MainContent components/Episodes';
 
 function MainContent() {
   let {urlRouter}=useContext(context)
+  const location = useLocation();
 
   return (
     <main className='Main'>
@@ -20,6 +21,7 @@ function MainContent() {
         <Route path={urlRouter.contact} element={<Contact/>} />
         <Route path={urlRouter.episodes} element={<Episodes/>} />
       </Routes>
+
     </main>
   )
 }

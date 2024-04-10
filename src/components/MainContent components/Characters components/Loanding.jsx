@@ -1,10 +1,10 @@
 import React from "react";
-import loandingIMG from "../../../image/Loandig-icon.png"
-import "../../../css/Loanding.css"
-function Loanding() {
+import "../../../css/Loanding.css";
+
+function Loanding({ image }) {
   return (
     <div className="Loanding-container">
-      <img src={loandingIMG}  />
+      <img src={image} />
     </div>
   );
 }
