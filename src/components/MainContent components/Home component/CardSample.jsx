@@ -6,7 +6,7 @@ function CardSample({ content , style={} , extra="", hover=""}) {
     <div className={"card-container " + hover} key={content.title} style={style}>
       <div style={{fill:"inherit"}}>{content.svg}</div>
       <h4  style={{color:"inherit"}}>{content.title}</h4>
-      <p  style={{colo:"inherit"}}>{content.content}</p>
+      <p  style={{color:"inherit"}}>{content.content}</p>
       <>{extra}</>
 
     </div>

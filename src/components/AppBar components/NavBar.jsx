@@ -7,7 +7,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 function NavBar() {
-  let { url } = useContext(context);
+  let { url, loadPages } = useContext(context);
   const [responsive, setResponsive] = useState(false);
   const [close, setClose] = useState(false);
 
@@ -27,7 +27,6 @@ function NavBar() {
 
   const handlerClickClose = () => {
     setClose(!close);
-    
   };
 
   useEffect(() => {
@@ -73,7 +72,11 @@ function NavBar() {
           ""
         )}
         {url.map((obj) => (
-          <li key={obj.name} className={"nav-ul_li " + "nav-li_" + obj.name}>
+          <li
+            key={obj.name}
+            className={"nav-ul_li " + "nav-li_" + obj.name}
+            onClick={loadPages}
+          >
             <Link
               key={obj.name}
               to={obj.href}
@@ -84,7 +87,16 @@ function NavBar() {
           </li>
         ))}
 
-        <span onClick={responsive ? handlerClickClose : null}>
+        <span
+          onClick={
+            responsive
+              ? () => {
+                  loadPages();
+                  handlerClickClose();
+                }
+              : loadPages
+          }
+        >
           {
             <ButtonNav
               text={"CONTACT US"}

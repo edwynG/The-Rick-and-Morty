@@ -19,7 +19,7 @@ let config = {
 function Home() {
   let { urlRouter } = useContext(context);
   const [Width, setWidth] = useState(340);
-
+  const { loadPages } = useContext(context);
   const handlerWidth = () =>
     window.innerWidth < 370 ? setWidth(270) : setWidth(340);
 
@@ -64,9 +64,7 @@ function Home() {
               </p>
               <h1>The Rick and Morty</h1>
               <div>
-                <h2 className="animation-title">
-                  Characters
-                </h2>
+                <h2 className="animation-title">Characters</h2>
               </div>
             </span>
             <ButtonNav
@@ -80,14 +78,16 @@ function Home() {
         <section className="Home-container_box">
           {informationCard.map((obj, i) => {
             return (
-              <Link to={obj.to} key={i}>
-                <CardSample
-                  content={obj}
-                  style={{ cursor: "pointer", width: Width }}
-                  hover="card_hover"
-                />
-                ;
-              </Link>
+              <span onClick={loadPages} key={(i+1)}>
+                <Link to={obj.to} key={i}>
+                  <CardSample
+                    content={obj}
+                    style={{ cursor: "pointer", width: Width }}
+                    hover="card_hover"
+                  />
+                  ;
+                </Link>
+              </span>
             );
           })}
         </section>

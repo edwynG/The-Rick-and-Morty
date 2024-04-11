@@ -1,7 +1,7 @@
 "use strict";
 
 import axios from "axios";
-
+import emailjs from '@emailjs/browser';
 
 export const instance = axios.create({
   baseURL: "https://rickandmortyapi.com/api",
@@ -36,15 +36,15 @@ export const getAxiosMutiple = async (url_arr) => {
 
 export const messageSend = async (name,lname,mg,email,subject = "¡Nuevo envío!") => {
     try {
-      // let result = await emailjs.send("service_9pki6ur","template_decage7",{
-      //   user_name: "g",
-      //   message: "f",
-      //   user_email: "g",
-      //   from_name: "fg",
-      //   });
+      let result = await emailjs.send("service_9pki6ur","template_decage7",{
+        user_name: name + " " + lname,
+        message: mg,
+        user_email: email,
+        from_name: subject,
+        },"ILLDNvgr7g6sRfwHa");
 
-        console.log(result)
+        return result
     } catch (error) {
-      console.log(result)
+      return error
     }
 };

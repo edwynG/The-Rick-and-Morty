@@ -37,6 +37,7 @@ function Characters() {
   const [pages, setPages] = useState(0);
   const [objectAPI, setObjectAPI] = useState([]);
   const [load, setLoad] = useState(false);
+  const { loadPages } = useContext(context);
 
   const fetchCharacters = async (name = "", type = false, divider = 8) => {
     let url = type ? name : requestApi.data.characters + "/" + name;
@@ -60,22 +61,24 @@ function Characters() {
 
   const Next = () => {
     if (pages == characterNext.length - 1 && objectAPI.info.next != null) {
+      loadPages();
       fetchCharacters(objectAPI.info.next, true);
     }
     if (pages >= characterNext.length - 1) return;
+    loadPages();
     setCharacters(characterNext[pages + 1]);
     setPages(pages + 1);
-    window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
 
   const Before = () => {
     if (pages == 0 && objectAPI.info.prev != null) {
+      loadPages();
       fetchCharacters(objectAPI.info.prev, true);
     }
     if (pages <= 0) return;
+    loadPages();
     setCharacters(characterNext[pages - 1]);
     setPages(pages - 1);
-    window.scroll({ top: 100, left: 100, behavior: "smooth" });
   };
 
   useLayoutEffect(() => {
@@ -103,9 +106,9 @@ function Characters() {
                   name="Search"
                   required
                   onChange={(e) => setInputSearch(e.target.value)}
-                  onKeyDown={(e)=>{
-                    if(e.key === "Enter" && inputSearch != ""){
-                      fetchCharacters("?name=" + inputSearch)
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && inputSearch != "") {
+                      fetchCharacters("?name=" + inputSearch);
                     }
                   }}
                 />

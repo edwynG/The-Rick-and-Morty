@@ -23,6 +23,8 @@ if (requestApi.data != null) {
   countEpisodes = episodesData.data.info.count;
 }
 
+const loadPages= ()=> window.scroll({ top: 0, left: 0, behavior: "instant" }); 
+
 // router
 let urlRouter = {
   home: "/",
@@ -90,6 +92,7 @@ export function ContextProvider(props) {
     sections,
     urlRouter,
     requestApi,
+    loadPages,
   };
   return <context.Provider value={show}>{props.children}</context.Provider>;
 }

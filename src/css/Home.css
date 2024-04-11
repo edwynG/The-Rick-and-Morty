@@ -65,6 +65,12 @@
   color: var(--color_hover);
   fill: var(--color_hover);
 }
+@media (width <= 1110px) {
+  .Section-container {
+    gap: 75px;
+    padding-bottom: 40px;
+  }
+}
 
 @media (width <= 792px) {
   .details-container h1 {
