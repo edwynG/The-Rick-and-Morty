@@ -69,7 +69,7 @@ a {
 }
 
 @keyframes tip {
-  form {
+  from {
     border-right: transparent;
   }
 

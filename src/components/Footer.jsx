@@ -1,15 +1,65 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../css/Footer.css";
 import ItemsList from "./Footer components/ItemsList";
 import { context } from "../context/context";
 import { Link } from "react-router-dom";
+import { getAxios, getAxiosMutiple, handlerRequesteInstance } from "../API/API";
 
 function Footer() {
-  let { requestApi,sections, socialNetworks ,serverActions,setServerActions} = useContext(context);
+  let { urlRouter, socialNetworks, serverActions, setServerActions } =
+    useContext(context);
+  const [countCharacters, setCountCharacters] = useState(0);
+  const [countLocations, setCountLocations] = useState(0);
+  const [countEpisodes, setCountEpisodes] = useState(0);
 
-  if (!requestApi.status) {
-    setServerActions(false)
-  }
+  const refreshStatus = async () => {
+    let res = await handlerRequesteInstance();
+    if (!res.status) {
+      setServerActions(false);
+    }
+  };
+
+  let sections = [
+    {
+      key: "CHARACTERS",
+      value: countCharacters,
+      url: urlRouter.characters,
+    },
+    {
+      key: "LOCATIONS",
+      value: countLocations,
+      url: urlRouter.locations,
+    },
+    {
+      key: "EPISODES",
+      value: countEpisodes,
+      url: urlRouter.episodes,
+    },
+  ];
+
+  useEffect(() => {
+    refreshStatus();
+    handlerRequesteInstance()
+      .then((response) => {
+        if (response.data != null) {
+          let { characters, locations, episodes } = response.data;
+          return getAxiosMutiple([
+            getAxios(characters),
+            getAxios(locations),
+            getAxios(episodes),
+          ]);
+        }
+        return null;
+      })
+      .then(([charactersData, locationsData, episodesData]) => {
+        setCountCharacters(charactersData.data.info.count);
+        setCountLocations(locationsData.data.info.count);
+        setCountEpisodes(episodesData.data.info.count);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
 
   return (
     <footer className="Footer">

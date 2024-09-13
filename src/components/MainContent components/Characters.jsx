@@ -5,7 +5,7 @@ import { context } from "../../context/context";
 import { FaBoxes } from "react-icons/fa";
 import { BsFillBox2Fill } from "react-icons/bs";
 import { IoSearch } from "react-icons/io5";
-import { getAxios } from "../../API/API";
+import { getAxios, handlerRequesteInstance } from "../../API/API";
 import ButtonPages from "./Characters components/ButtonPages";
 import GenericCharctersCard from "./Characters components/GenericCharctersCard";
 import GenericCharacterCardSample from "./Characters components/GenericCharacterCardSample";
@@ -28,7 +28,6 @@ const arrayDivider = (arr, divider) => {
 };
 
 function Characters() {
-  const { requestApi } = useContext(context);
   const [characters, setCharacters] = useState([]);
   const [typeBox, setTypeBox] = useState(false);
   const [characterNext, setCharacterNext] = useState([]);
@@ -40,7 +39,8 @@ function Characters() {
   const { loadPages } = useContext(context);
 
   const fetchCharacters = async (name = "", type = false, divider = 8) => {
-    let url = type ? name : requestApi.data.characters + "/" + name;
+    let res = await handlerRequesteInstance();
+    let url = type ? name : res.data.characters + "/" + name;
     setLoad(true);
     try {
       let data = await getAxios(url);
@@ -86,6 +86,7 @@ function Characters() {
     if (localStorage.getItem("CardType") != null) {
       setTypeBox(localStorage.getItem("CardType") == "true" ? true : false);
     }
+
   }, []);
 
   return (
