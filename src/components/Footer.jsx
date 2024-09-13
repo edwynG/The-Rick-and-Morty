@@ -89,14 +89,7 @@ function Footer() {
 
       <div className="Footer-watermark">
         ❮❯
-        <Link
-          to={
-            socialNetworks.find(
-              (obj) => obj.key.toLocaleLowerCase() == "github"
-            ).url
-          }
-          target="_blank"
-        >
+        <Link to={"https://github.com/edwynG"} target="_blank">
           <span>Edwyn Guzman</span>
         </Link>
         2024

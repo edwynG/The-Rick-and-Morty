@@ -14,7 +14,7 @@ const ItemsList = ({ list, struct = true, classContainer = "Footer" }) => {
             className={(classContainer + "_ul-li_" + obj.key).replace(" ", "")}
             onClick={struct? loadPages : null}
           >
-            <Link to={obj.url} target={struct? "":"_blank"}>
+            <Link to={obj.url} target={struct ? "":"_blank"}>
               {struct ? obj.key + ": " + obj.value : obj.value}
             </Link>
           </li>

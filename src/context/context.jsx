@@ -1,22 +1,19 @@
-import React, {
-  createContext,
-  useState,
-} from "react";
+import React, { createContext, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
-
 
 export const context = createContext();
 const loadPages = () => window.scroll({ top: 0, left: 0, behavior: "instant" });
 
 // router
+const dom = "/";
 let urlRouter = {
-  home: "/",
-  characters: "/Characters",
-  locations: "/Locations",
-  episodes: "/Episodes",
-  contact: "/Contact",
+  home: dom,
+  characters: dom + "Characters",
+  locations: dom + "Locations",
+  episodes: dom + "Episodes",
+  contact: dom + "Contact",
 };
 
 // Route nav app
@@ -32,7 +29,7 @@ let socialNetworks = [
   {
     key: "GitHub",
     value: <FaGithub />,
-    url: "https://github.com/edwynG",
+    url: "https://github.com/edwynG/The-Rick-and-Morty.git",
   },
   {
     key: "X",
@@ -42,14 +39,14 @@ let socialNetworks = [
   {
     key: "Contact us",
     value: <FaHeart />,
-    url: "/Contact",
+    url: urlRouter.contact,
   },
 ];
 //
 
 export function ContextProvider(props) {
   const [serverActions, setServerActions] = useState(true);
- 
+
   let show = {
     serverActions,
     setServerActions,
@@ -57,6 +54,7 @@ export function ContextProvider(props) {
     socialNetworks,
     urlRouter,
     loadPages,
+    dom,
   };
   return <context.Provider value={show}>{props.children}</context.Provider>;
 }

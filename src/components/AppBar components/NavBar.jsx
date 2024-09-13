@@ -7,7 +7,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 function NavBar() {
-  let { url, loadPages } = useContext(context);
+  let { url, loadPages, urlRouter } = useContext(context);
   const [responsive, setResponsive] = useState(false);
   const [close, setClose] = useState(false);
 
@@ -100,7 +100,7 @@ function NavBar() {
           {
             <ButtonNav
               text={"CONTACT US"}
-              link={"/Contact"}
+              link={urlRouter.contact}
               style={
                 responsive ? { backgroundColor: "var(--color_hover)" } : {}
               }
