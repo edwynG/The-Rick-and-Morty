@@ -82,15 +82,6 @@
     rgba(0, 0, 0, 0.06) 0px 2px 6px -1px;
 }
 
-/* .container-order_by{
-    background-color: var(--bg_secundary_global);
-  
-}
-
-.container-type_card{
-    background-color: var(--bg_secundary_global); 
- 
-} */
 .lable_text {
   display: flex;
   padding: 10px;
@@ -113,14 +104,14 @@
   border: 1px solid #111;
   border-radius: 20px;
   width: 100%;
-  padding: 5px 17px;
+  padding: 10px 17px;
   flex-basis: 90%;
   height: 46px;
   outline: none;
 }
 .lable_text > label > input[type="text"]:focus ~ .focus_text-input,
 .lable_text > label > input[type="text"]:user-valid ~ .focus_text-input {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   font-size: 10px;
   color: var(--bg_card_global);
 }

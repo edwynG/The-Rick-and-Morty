@@ -1,5 +1,5 @@
 import React from "react";
-import CardSample from "../Home component/CardSample"
+import CardSample from "../Home components/CardSample"
 
 
 function GenericCharacterCardSample({ characters }) {

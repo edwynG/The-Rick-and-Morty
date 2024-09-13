@@ -1,12 +1,13 @@
-import React from 'react'
-import ContentClasic from './Home component/ContentClasic'
+import React from "react";
+import ContentClasic from "./Home components/ContentClasic";
+import Maintenance from "./Maintenance components/Maintenance";
 
 function Episodes() {
   return (
     <ContentClasic>
-        <div>Episodes</div>
+      <Maintenance />
     </ContentClasic>
-  )
+  );
 }
 
-export default Episodes
+export default Episodes;

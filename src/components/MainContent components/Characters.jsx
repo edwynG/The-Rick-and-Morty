@@ -1,6 +1,6 @@
 import React, { useContext, useLayoutEffect, useState } from "react";
 import "../../css/Characters.css";
-import ContentClasic from "./Home component/ContentClasic";
+import ContentClasic from "./Home components/ContentClasic";
 import { context } from "../../context/context";
 import { FaBoxes } from "react-icons/fa";
 import { BsFillBox2Fill } from "react-icons/bs";

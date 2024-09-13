@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import ContentClasic from "./Home component/ContentClasic";
+import ContentClasic from "./Home components/ContentClasic";
 import "../../css/Contact.css";
-import FormContact from "./Contact component.jsx/FormContact";
-import CardSample from "../../components/MainContent components/Home component/CardSample";
+import FormContact from "./Contact components/FormContact";
+import CardSample from "../../components/MainContent components/Home components/CardSample";
 import { useState } from "react";
 import { BsFillSendCheckFill } from "react-icons/bs";
 import { BsSendExclamationFill } from "react-icons/bs";
