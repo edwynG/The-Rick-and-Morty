@@ -1,0 +1,43 @@
+.card-container{
+    border-radius: 15px;
+    min-width: 190px;
+    width: 250px;
+    height: 180px;
+    background-color: var(--bg_card_global);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    text-align: center; 
+    padding: 5px;
+    box-shadow: var(--box_shadow_global);
+    color: var(--color_text_primary);
+    fill: var(--color_text_primary);
+   
+}
+
+.card-container > *{
+    color: inherit;
+}
+
+.card-container h4{
+    font-size:medium;
+}
+
+.card-container p{
+    font-size: x-small;
+    font-weight: 100;
+}
+
+.card-container div svg{
+    fill: inherit;
+}
+
+
+.card-container div img{
+    width: 60px;
+    object-fit: cover;
+    border-radius: 100%;
+}

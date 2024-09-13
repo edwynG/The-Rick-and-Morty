@@ -1,0 +1,200 @@
+.characters-cards {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  max-width: 1300px;
+}
+
+.container-content {
+  padding: 90px 0px;
+  display: grid;
+  min-height: 500px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.container-btn_characters {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 15px;
+  height: 80px;
+  align-items: end;
+  transition: all 300ms ease;
+}
+
+.btn_disabled {
+  color: #fff !important;
+  background-color: var(--bg_card_global) !important;
+  cursor: no-drop !important;
+}
+
+.container-btn_characters > button[type="button"] {
+  border: none;
+  margin: 5px;
+  border-radius: 8px;
+  padding: 5px 15px;
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--color_hover);
+  cursor: pointer;
+  box-shadow: var(--box_shadow_global);
+}
+.characters-options {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-config_card {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.container-inputs {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+.container-type_card > button[type="button"] {
+  border: none;
+  border-radius: 1000%;
+  padding: 5px 7px;
+  background-color: var(--color_hover);
+  cursor: pointer;
+  transition: all 300ms ease;
+  box-shadow: rgba(5, -8, 0, 0.5) 0px 4px 10px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 6px -1px;
+}
+
+.lable_text {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  flex-grow: 1;
+  justify-content: center;
+  max-width: 640px;
+  height: 70px;
+  align-items: center;
+}
+
+.lable_text > label {
+  width: 100%;
+  position: relative;
+  height: 65px;
+  display: grid;
+  align-items: center;
+}
+.lable_text > label > input[type="text"] {
+  border: 1px solid #111;
+  border-radius: 20px;
+  width: 100%;
+  padding: 10px 17px;
+  flex-basis: 90%;
+  height: 46px;
+  outline: none;
+}
+.lable_text > label > input[type="text"]:focus ~ .focus_text-input,
+.lable_text > label > input[type="text"]:user-valid ~ .focus_text-input {
+  transform: translateY(-10px);
+  font-size: 10px;
+  color: var(--bg_card_global);
+}
+
+.focus_text-input {
+  position: absolute;
+  left: 2.5px;
+  top: 19px;
+  padding-left: 15px;
+  transition: all 400ms ease;
+}
+
+.lable_text > label > input[type="text"]:focus {
+  outline: 1px solid var(--color_hover);
+}
+.icon_search {
+  fill: inherit;
+  font-size: 20px;
+}
+
+.btn_search {
+  border-radius: 100%;
+  padding: 12px 14px;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  fill: var(--color_text_primary);
+  background-color: var(--color_hover);
+  box-shadow: rgba(5, -8, 0, 0.5) 0px 4px 10px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 6px -1px;
+  transition: all 300ms ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn_search:active,
+.container-type_card > button[type="button"]:active {
+  background-color: rgb(170, 147, 30);
+}
+
+.container-type_card {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.container-type_card svg {
+  fill: #ffff;
+  font-size: 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: fill 300ms ease;
+}
+
+.search_details {
+  height: 50px;
+}
+
+.not_found {
+  color: #fff;
+  font-size: 70px;
+  fill: #ffff;
+  align-self: center;
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  font-weight: bold;
+  align-items: baseline;
+  height: 300px;
+}
+
+.not_found > svg {
+  fill: inherit;
+  align-self: center;
+}
+
+.loanding_character {
+  position: absolute;
+  height: calc(100% - 460px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
