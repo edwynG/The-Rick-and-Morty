@@ -35,13 +35,12 @@ function Characters() {
   const [found, setFound] = useState(false);
   const [pages, setPages] = useState(0);
   const [objectAPI, setObjectAPI] = useState([]);
-  const [load, setLoad] = useState(false);
+  const [load, setLoad] = useState(true);
   const { loadPages } = useContext(context);
 
   const fetchCharacters = async (name = "", type = false, divider = 8) => {
     let res = await handlerRequesteInstance();
     let url = type ? name : res.data.characters + "/" + name;
-    setLoad(true);
     try {
       let data = await getAxios(url);
       let matriz = arrayDivider(data.data.results, divider);
