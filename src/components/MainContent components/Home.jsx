@@ -85,7 +85,7 @@ function Home() {
                     style={{ cursor: "pointer", width: Width }}
                     hover="card_hover"
                   />
-                  ;
+                  
                 </Link>
               </span>
             );
