@@ -36,6 +36,8 @@ ul {
 body {
   position: relative;
   height: 100vh;
+  background-color: white; /* Asegúrate de que el fondo sea blanco */
+  color: black; /* Color de texto oscuro */
 }
 
 .root {
@@ -50,7 +52,7 @@ a {
   text-align: center;
   width: 10ch;
   overflow: hidden;
-  animation: write 1.3s steps(10), tip .5s  step-end forwards  alternate;
+  animation: write 1.3s steps(10), tip 0.5s step-end forwards alternate;
 
   border-right: 4px solid orange;
 }
@@ -65,7 +67,7 @@ a {
   border-right: 4px solid orange;
   white-space: nowrap;
   width: 13ch;
-  animation: write 3s steps(13) infinite, tic .5s step-end infinite alternate;
+  animation: write 3s steps(13) infinite, tic 0.5s step-end infinite alternate;
 }
 
 @keyframes tip {
@@ -73,11 +75,9 @@ a {
     border-right: transparent;
   }
 
-  to{
+  to {
     border: none;
   }
-  
- 
 }
 
 @keyframes write {
