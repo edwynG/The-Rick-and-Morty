@@ -5,7 +5,7 @@ import { MdEmail } from "react-icons/md";
 import { MdSubtitles } from "react-icons/md";
 import { messageSend } from "../../../API/API";
 
-function FormContact({notification}) {
+function FormContact({ notification }) {
   const name = useRef();
   const lastName = useRef();
   const email = useRef();
@@ -25,13 +25,13 @@ function FormContact({notification}) {
     message.current.value = "";
     email.current.value = "";
     subject.current.value = "";
-    console.log(nm,ln,ms,em,sj)
 
     try {
       let result = await messageSend(nm, ln, ms, em, sj);
-      notification(result)
+      notification(result);
     } catch (error) {
-      notification(result)
+      console.log(error);
+      notification(error);
     }
   };
 

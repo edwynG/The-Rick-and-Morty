@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import ContentClasic from "./Home components/ContentClasic";
 import "../../css/Contact.css";
 import FormContact from "./Contact components/FormContact";
@@ -11,10 +11,10 @@ function Contact() {
   const [notification, setNotification] = useState({});
   const [showNotification, setShowNotification] = useState(false);
   let notiInfo = {
-    title: notification.status == 200 ? "Message send" : "Message not send",
+    title: notification?.status == 200 ? "Message send" : "Message not send",
     content: notification.text,
     svg:
-      notification.status == 200 ? (
+      notification?.status == 200 ? (
         <BsFillSendCheckFill />
       ) : (
         <BsSendExclamationFill />
@@ -23,7 +23,7 @@ function Contact() {
 
   let styleNoti = {
     backgroundColor:
-      notification.status == 200
+      notification?.status == 200
         ? "var(--color_hover)"
         : "var(--color_live_false)",
     minWidth: 200,
@@ -31,13 +31,16 @@ function Contact() {
     color: "#fff",
     fill: "#fff",
   };
-
-  useEffect(()=>{
-    if(notification.text != undefined && showNotification != true){
-      setShowNotification(true)
-      setTimeout(()=> setShowNotification(false),12000)
+  const ref = useRef(true);
+  useEffect(() => {
+    if (ref.current) {
+      ref.current = false;
+      return;
     }
-  },[notification])
+    
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 12000);
+  }, [notification]);
 
   return (
     <ContentClasic>

@@ -1,10 +1,10 @@
 "use strict";
 
 import axios from "axios";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 export const instance = axios.create({
-  baseURL: "https://rickandmortyapi.com/api",
+  baseURL: import.meta.env.VITE_API_DATA,
 });
 
 export const getAxios = async (url) => {
@@ -34,17 +34,28 @@ export const getAxiosMutiple = async (url_arr) => {
   }
 };
 
-export const messageSend = async (name,lname,mg,email,subject = "¡Nuevo envío!") => {
-    try {
-      let result = await emailjs.send("service_9pki6ur","template_decage7",{
+export const messageSend = async (
+  name,
+  lname,
+  mg,
+  email,
+  subject = "¡Nuevo envío!"
+) => {
+  try {
+    let result = await emailjs.send(
+      import.meta.env.VITE_EMAIL_SERVICE_ID,
+      import.meta.env.VITE_EMAIL_TEMPLATE,
+      {
         user_name: name + " " + lname,
         message: mg,
         user_email: email,
         from_name: subject,
-        },"ILLDNvgr7g6sRfwHa");
-
-        return result
-    } catch (error) {
-      return error
-    }
+      },
+      import.meta.env.VITE_EMAIL_KEY_PUBLIC
+    );
+    return result;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 };
